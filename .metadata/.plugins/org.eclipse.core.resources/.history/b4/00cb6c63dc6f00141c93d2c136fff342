@@ -1,0 +1,8 @@
+package gov.aas.pagibig.service.endpoints;
+
+import org.springframework.ws.server.endpoint.annotation.Endpoint;
+
+@Endpoint
+public class PostOtcCollectionsAndOtherCollectionsEndpoint {
+	
+}

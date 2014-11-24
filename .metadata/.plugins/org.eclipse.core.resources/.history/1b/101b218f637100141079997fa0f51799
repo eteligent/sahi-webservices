@@ -1,0 +1,162 @@
+package gov.aas.pagibig.service;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import gov.aas.pagibig.exception.IntegErrorCode;
+import gov.aas.pagibig.webservice.IntegApRequestForPaymentList;
+import gov.aas.pagibig.webservice.IntegApRequestForPaymentRequest;
+import gov.aas.pagibig.webservice.IntegApRequestForPaymentResponse;
+import gov.aas.pagibig.webservice.IntegGlPostJournalEntriesToGlResponse;
+
+@Service
+public class RequestForPaymentServiceImpl implements RequestForPaymentService {
+
+	@Override
+	public IntegApRequestForPaymentResponse requestForPayment(
+			IntegApRequestForPaymentRequest request) {
+		IntegApRequestForPaymentResponse response = new IntegApRequestForPaymentResponse();
+		File file = new File("temp", "files");
+		file.mkdirs();
+		// For now.. to be refactored
+		List<String> headers = new ArrayList<String>();
+		headers.add("HDR_INVOICE_NUM");
+		headers.add("HDR_INVOICE_TYPE_LOOKUP_CODE");
+		headers.add("HDR_INVOICE_DATE");
+		headers.add("HDR_VENDOR_NUM");
+		headers.add("HDR_VENDOR_SITE_CODE");
+		headers.add("HDR_INVOICE_AMOUNT");
+		headers.add("HDR_DESCRIPTION");
+		headers.add("HDR_GOODS_RECEIVED_DATE");
+		headers.add("HDR_INVOICE_RECEIVED_DATE");
+		headers.add("HDR_GL_DATE");
+		headers.add("HDR_SOURCE ");
+		headers.add("DTL_LINE_NUMBER");
+		headers.add("DTL_AMOUNT");
+		headers.add("DTL_LINE_TYPE_LOOKUP_CODE");
+		headers.add("DTL_DR_COMPANY");
+		headers.add("DTL_DR_Branch/Office");
+		headers.add("DTL_DR_Activity_Code");
+		headers.add("DTL_DR_Cost_Classification");
+		headers.add("DTL_DR_GL_ACCOUNT");
+		headers.add("DTL_DR_Future_Account");
+		headers.add("DTL_DR_Future_Account");
+		headers.add("DTL_DR_AMOUNT");
+		headers.add("DTL_Reference_Number");
+		headers.add("DTL_CR_COMPANY");
+		headers.add("DTL_CR_ Branch/Office");
+		headers.add("DTL_CR_ Activity_Code");
+		headers.add("DTL_CR_Cost_Classification");
+		headers.add("DTL_CR_GL_Account");
+		headers.add("DTL_CR_Future_Account");
+		headers.add("DTL_CR_Future_Account");
+		headers.add("DTL_CR_AMOUNT");
+		headers.add("DTL_WHT_CODE");
+		headers.add("HDR_CURR_CODE");
+		headers.add("Payment Terms Code");
+		headers.add("FILENAME");
+		headers.add("BRANCH_CODE");
+		headers.add("TRANSACTION_ID");
+		try {
+			String fileName = "";
+			String branchCode = "";
+			File file2 = File.createTempFile("temp",
+					"." + request.getSourceSysId(), file);
+			FileWriter writer = new FileWriter(file2);
+			// Append first the headers
+			for (int index = 0; index < headers.size(); ++index) {
+				if (index == headers.size() - 1) {
+					writer.append(headers.get(index) + "\n");
+				} else {
+					writer.append(headers.get(index) + ",");
+				}
+			}
+			
+			List<IntegApRequestForPaymentList> list = request.getIntegApRequestForPaymentList();
+			
+			for(IntegApRequestForPaymentList apRequest : list){
+				writer.append(apRequest.getHdrInvoiceNum() + ",");
+				writer.append(apRequest.getHdrInvoiceTypeLookupCode() + ",");
+				writer.append(apRequest.getHdrInvoiceDate() + ",");
+				writer.append(apRequest.getHdrVendorNum() + ",");
+				writer.append(apRequest.getHdrVendorSiteCode() + ",");
+				writer.append(apRequest.getHdrInvoiceAmount() + ",");
+				writer.append(apRequest.getHdrDescription() + ",");
+				writer.append(apRequest.getHdrGoodsReceivedDate() + ",");
+				writer.append(apRequest.getHdrInvoiceDate() + ",");
+				writer.append(apRequest.getHdrGlDate() + ",");
+				writer.append(apRequest.getHdrSource() + ",");
+				writer.append(apRequest.getDtlLineNumber() + ",");
+				writer.append(apRequest.getDtlDrCompany() + ",");
+				writer.append(apRequest.getDtlDrBranchOrOffice() + ",");
+				writer.append(apRequest.getDtlDrActivityCode() + ",");
+				writer.append(apRequest.getDtlDrCostClassification() + ",");
+				writer.append(apRequest.getDtlDrGlAccount() + ",");
+				writer.append(apRequest.getDtlDrFutureAccount() + ",");
+				writer.append(apRequest.getDtlDrFutureAccount2() + ",");
+				writer.append(apRequest.getDtlDrAmount() + ",");
+				writer.append(apRequest.getDtlReferenceNumber() + ",");
+				writer.append(apRequest.getDtlCrCompany() + ",");
+				writer.append(apRequest.getDtlCrBranchOrOffice() + ",");
+				writer.append(apRequest.getDtlCrActivityCode() + ",");
+				writer.append(apRequest.getDtlCrCostClassification() + ",");
+				writer.append(apRequest.getDtlCrGlAccount() + ",");
+				writer.append(apRequest.getDtlCrFutureAccount() + ",");
+				writer.append(apRequest.getDtlCrFutureAccount2() + ",");
+				writer.append(apRequest.getDtlCrAmount() + ",");
+				writer.append(apRequest.getDtlWhiteCode() + ",");
+				writer.append(apRequest.getHdrCurrCode() + ",");
+				writer.append(apRequest.getPaymentTermsCode() + ",");
+				writer.append(apRequest.getFilename() + ",");
+				writer.append(apRequest.getBranchCode() + ",");
+				writer.append(apRequest.getTransactionId() + ",");
+			}
+			Date date = new Date();
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(date);
+			String year = new SimpleDateFormat("yy").format(date);
+			String month = new SimpleDateFormat("MM").format(date);
+			String day = new SimpleDateFormat("dd").format(date);
+			String hour = new SimpleDateFormat("HH").format(date);
+			String minutes = new SimpleDateFormat("mm").format(date);
+			String seconds = new SimpleDateFormat("ss").format(date);
+			writer.close();
+			response.setResponseCode("1");
+			response.setResponseMessage("Success");
+		} catch (IOException e) {
+			response.setError(AASServiceUtil.createError(
+					IntegErrorCode.SERVER_EXCEPTION, "No Branch Code"));
+		}
+
+		return response;
+	}
+	
+	private static void copyFileUsingFileStreams(File source, File dest)
+			throws IOException {
+		InputStream input = null;
+		OutputStream output = null;
+		input = new FileInputStream(source);
+		output = new FileOutputStream(dest);
+		byte[] buf = new byte[1024];
+		int bytesRead;
+		while ((bytesRead = input.read(buf)) > 0) {
+			output.write(buf, 0, bytesRead);
+
+		}
+		input.close();
+		output.close();
+	}
+
+}

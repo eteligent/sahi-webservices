@@ -1,0 +1,69 @@
+package gov.aas.pagibig.service;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import gov.aas.pagibig.webservice.IntegPostOtcCollectionsAndOtherCollectionsList;
+import gov.aas.pagibig.webservice.IntegPostOtcCollectionsAndOtherCollectionsRequest;
+import gov.aas.pagibig.webservice.IntegPostOtcCollectionsAndOtherCollectionsResponse;
+
+@Service
+public class OtcCollectionsAndOtherCollectionsServiceImpl implements OtcCollectionsAndOtherCollectionsService{
+
+	@Override
+	public IntegPostOtcCollectionsAndOtherCollectionsResponse postOtcCollections(
+			IntegPostOtcCollectionsAndOtherCollectionsRequest request) {
+		List<String> headers = new ArrayList<String>();
+		headers.add("HDR_RECEIPT_NO");
+		headers.add("HDR_RECEIPT_DATE");
+		headers.add("HDR_AMOUNT");
+		headers.add("HDR_GL_DATE");
+		headers.add("HDR_RECEIPT_METHOD_NAME");
+		headers.add("HDR_CUSTOMER_NUMBER");
+		headers.add("HDR_LOCATION_CODE");
+		headers.add("HDR_CUSTOMER_NAME");
+		headers.add("HDR_LOCATION_NAME");
+		headers.add("HDR_CURRENCY_CODE");
+		headers.add("DTL_INVOICE_NUMBER");
+		headers.add("DTL_RECEIVABLE_ACTIVITY");
+		headers.add("DTL_DESCRIPTION");
+		headers.add("DTL_BANK_NAME");
+		headers.add("DTL_CHECK_NUMBER");
+		headers.add("FILENAME");
+		headers.add("BRANCH_CODE");
+		headers.add("TRANSACTION_ID");
+		
+		File file = new File("temp", "files");
+		file.mkdirs();
+		try {
+			File file2 = File.createTempFile("temp","." + request.getSourceSysId(), file);
+			FileWriter writer = new FileWriter(file2);
+			
+			List<IntegPostOtcCollectionsAndOtherCollectionsList> list = request.getIntegPostOtcCollectionsAndOtherCollectionsList();
+			
+			for (int index = 0; index < headers.size(); ++index) {
+				if (index == headers.size() - 1) {
+					writer.append(headers.get(index) + "\n");
+				} else {
+					writer.append(headers.get(index) + ",");
+				}
+			}
+			for(IntegPostOtcCollectionsAndOtherCollectionsList collection : list){
+				writer.append(collection.getHdrReceiptNo() + ",");
+				writer.append(collection.getHdrReceiptDate());
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return null;
+	}
+
+}

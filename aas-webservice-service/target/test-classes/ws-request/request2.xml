@@ -1,0 +1,7 @@
+      <web:integ_aas_get_fore_statusRequest xmlns:web="http://gov/aas/pagibig/webservice">
+         <web:source_sys_id>?</web:source_sys_id>
+         <web:user_name>?</web:user_name>
+         <web:Password>?</web:Password>
+         <web:Mid>AB-14567</web:Mid>
+         <web:Prop_No>YT-34FA123</web:Prop_No>
+      </web:integ_aas_get_fore_statusRequest>

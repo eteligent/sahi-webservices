@@ -1,0 +1,45 @@
+package gov.aas.pagibig.service;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import gov.aas.pagibig.webservice.IntegApRequestForPaymentRequest;
+import gov.aas.pagibig.webservice.IntegApRequestForPaymentResponse;
+import gov.aas.pagibig.webservice.IntegGlPostJournalEntriesToGlResponse;
+
+public class RequestForPaymentServiceImpl implements RequestForPaymentService{
+
+	@Override
+	public IntegApRequestForPaymentResponse requestForPayment(
+			IntegApRequestForPaymentRequest request) {
+		IntegGlPostJournalEntriesToGlResponse response = new IntegGlPostJournalEntriesToGlResponse();
+		File file = new File("temp", "files");
+		file.mkdirs();
+		// For now.. to be refactored
+		List<String> headers = new ArrayList<String>();
+		headers.add("ACCTG_DATE");
+		headers.add("ACCTG_TYPE");
+		headers.add("SEGMENT1");
+		headers.add("SEGMENT2");
+		headers.add("SEGMENT3");
+		headers.add("SEGMENT4");
+		headers.add("SEGMENT5");
+		headers.add("SEGMENT6");
+		headers.add("SEGMENT7");
+		headers.add("SEGMENT8");
+		headers.add("SEGMENT9");
+		headers.add("SEGMENT10");
+		headers.add("JOURNAL_NAME");
+		headers.add("CATEGORY_NAME");
+		headers.add("CURRENCY_CODE");
+		headers.add("AMOUNT");
+		headers.add("REFERENCES/DESC");
+		headers.add("FILENAME");
+		headers.add("BRANCH_C0DE");
+		headers.add("TRANSACTION_ID");
+		
+		return null;
+	}
+
+}

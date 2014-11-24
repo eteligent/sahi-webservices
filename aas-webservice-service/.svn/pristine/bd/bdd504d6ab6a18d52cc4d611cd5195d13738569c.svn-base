@@ -1,0 +1,10 @@
+package gov.aas.pagibig.service;
+import gov.aas.pagibig.webservice.IntegOtcInsertAcqPofDetailRequest;
+import gov.aas.pagibig.webservice.IntegOtcInsertAcqPofDetailResponse;
+
+public interface InsertPofDetailsService
+{
+
+	IntegOtcInsertAcqPofDetailResponse insertPOF( IntegOtcInsertAcqPofDetailRequest request );
+
+}

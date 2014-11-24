@@ -1,0 +1,113 @@
+package gov.aas.pagibig.service;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import gov.aas.pagibig.common.exception.IISPException;
+import gov.aas.pagibig.common.utils.FTPUploaderUtil;
+import gov.aas.pagibig.exception.IntegErrorCode;
+import gov.aas.pagibig.webservice.IntegGlPostJournalEntriesToGlRequest;
+import gov.aas.pagibig.webservice.IntegGlPostJournalEntriesToGlRequestList;
+import gov.aas.pagibig.webservice.IntegGlPostJournalEntriesToGlResponse;
+
+@Service
+public class JournalEntriesServiceImpl implements JournalEntriesService {
+
+	@Override
+	public IntegGlPostJournalEntriesToGlResponse postJournalEntriesToGL(
+			IntegGlPostJournalEntriesToGlRequest request) {
+		IntegGlPostJournalEntriesToGlResponse response = new IntegGlPostJournalEntriesToGlResponse();
+		File file = new File("temp", "files");
+		file.mkdirs();
+		// For now.. to be refactored
+		List<String> headers = new ArrayList<String>();
+		headers.add("ACCTG_DATE");
+		headers.add("ACCTG_TYPE");
+		headers.add("SEGMENT1");
+		headers.add("SEGMENT2");
+		headers.add("SEGMENT3");
+		headers.add("SEGMENT4");
+		headers.add("SEGMENT5");
+		headers.add("SEGMENT6");
+		headers.add("SEGMENT7");
+		headers.add("SEGMENT8");
+		headers.add("SEGMENT9");
+		headers.add("SEGMENT10");
+		headers.add("JOURNAL_NAME");
+		headers.add("CATEGORY_NAME");
+		headers.add("CURRENCY_CODE");
+		headers.add("AMOUNT");
+		headers.add("REFERENCES/DESC");
+		headers.add("FILENAME");
+		headers.add("BRANCH_C0DE");
+		headers.add("TRANSACTION_ID");
+		try {
+			String fileName = "";
+			String branchCode = "";
+			File file2 = File.createTempFile("temp","." + request.getSourceSysId(), file);
+			FileWriter writer = new FileWriter(file2);
+			List<IntegGlPostJournalEntriesToGlRequestList> list = request
+					.getIntegGlPostJournalEntriesToGlRequestList();
+			// Append first the headers
+			for (int index = 0; index < headers.size(); ++index) {
+				if (index == headers.size() - 1) {
+					writer.append(headers.get(index) + "\n");
+				} else {
+					writer.append(headers.get(index) + ",");
+				}
+			}
+			for (IntegGlPostJournalEntriesToGlRequestList entry : list) {
+				writer.append(entry.getAcctgDate() + ",");
+				writer.append(entry.getAccountType() + ",");
+				writer.append(entry.getSegment1() + ",");
+				writer.append(entry.getSegment2() + ",");
+				writer.append(entry.getSegment3() + ",");
+				writer.append(entry.getSegment4() + ",");
+				writer.append(entry.getSegment5() + ",");
+				writer.append(entry.getSegment6() + ",");
+				writer.append(entry.getSegment7() + ",");
+				writer.append(entry.getSegment8() + ",");
+				writer.append(entry.getSegment9() + ",");
+				writer.append(entry.getSegment10() + ",");
+				writer.append(entry.getJournalName());
+				writer.append(entry.getCategoryName() + ",");
+				writer.append(entry.getCurrencyCode() + ",");
+				writer.append(entry.getAmount() + ",");
+				writer.append(entry.getReferencesOrDescription() + ",");
+				writer.append(entry.getBranchCode() + ",");
+				writer.append(entry.getTransactionId() + "\n");
+				branchCode = entry.getBranchCode();
+			}
+			Date date = new Date();
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(date);
+			String year = new SimpleDateFormat("yy").format(date);
+			String month = new SimpleDateFormat("MM").format(date);
+			String day = new SimpleDateFormat("dd").format(date);
+			String hour = new SimpleDateFormat("HH").format(date);
+			String minutes = new SimpleDateFormat("mm").format(date);
+			String seconds = new SimpleDateFormat("ss").format(date);
+			fileName = branchCode + year + month + day + hour + minutes + seconds;
+			file2.renameTo(fileName);
+			// close writer
+			writer.close();
+			/*FTPUploaderUtil.upload(file2, "Sample");*/
+			response.setResponseCode("1");
+			response.setResponseMessage("Successfuly Sent");
+		} catch (IOException e) {
+			response.setError(AASServiceUtil.createError(
+					IntegErrorCode.SERVER_EXCEPTION, e.getMessage()));
+		}
+
+		return response;
+	}
+
+}

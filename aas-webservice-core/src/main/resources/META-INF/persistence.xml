@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!-- BEFORE EDITING THIS FILE BE SURE YOU KNOW WHAT YOUR DOING. READ FIRST!!! -->
+<!-- http://www.mkyong.com/hibernate/how-to-configure-the-c3p0-connection-pool-in-hibernate -->
+<!-- http://www.mchange.com/projects/c3p0/ -->
+<!-- http://stackoverflow.com/questions/1511855/reproduce-com-mysql-jdbc-exceptions-jdbc4-communicationsexception-with-a-setup-o -->
+<!-- http://stackoverflow.com/questions/4440336/mysql-wait-timeout #http://www.mchange.com/projects/c3p0/ -->
+<!-- http://dev.mysql.com/doc/refman/5.0/en/show-variables.html -->
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	version="1.0">
+	<persistence-unit name="aasPU" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>gov.aas.pagibig.webservice.core.TBLForeClosedProperty</class>
+		<class>gov.aas.pagibig.webservice.core.TBLPaymentOrderForm</class>
+
+		<class>gov.aas.pagibig.webservice.core.TbGetBranchDetails</class>
+		<class>gov.aas.pagibig.webservice.core.TbGetPtnShortpaymInfo</class>
+		<class>gov.aas.pagibig.webservice.core.TbSearchDayRates</class>
+		
+		<class>gov.aas.pagibig.webservice.core.TBLHolidayInformation</class>
+		<class>gov.aas.pagibig.webservice.core.TBLUserDetails</class>
+		<class>gov.aas.pagibig.webservice.core.TbInsertPofHeader</class>
+		<class>gov.aas.pagibig.webservice.core.TbGetUnitdeptInfo</class>
+		<class>gov.aas.pagibig.webservice.core.TBLBranchPfrNoSeries</class>
+		<class>gov.aas.pagibig.webservice.core.TBLDuePdcSummary</class>
+		
+		<class>gov.aas.pagibig.webservice.core.TBLPostPdcpaymStatus</class>
+		<class>gov.aas.pagibig.webservice.core.TBLInsertPofDetails</class>
+		<class>gov.aas.pagibig.webservice.core.TBLGetPtnPaymDetails</class>
+		<class>gov.aas.pagibig.webservice.core.TBLGetPtnValuedatedTrans</class>
+		<class>gov.aas.pagibig.webservice.core.TBLGetPtnCreditMemo</class>
+		<class>gov.aas.pagibig.webservice.core.TBLUpdatePofStatus</class>
+		
+
+		<properties>
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/db_integ_aas" />
+			<property name="hibernate.connection.username" value="db_integ_aas" />
+			<property name="hibernate.connection.password" value="db_integ_aas" />
+			<property name="hibernate.connection.provider_class"
+				value="org.hibernate.connection.C3P0ConnectionProvider" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="format_sql" value="true" />
+			<property name="hibernate.c3p0.max_size" value="5" />
+			<property name="hibernate.c3p0.min_size" value="0" />
+			<property name="hibernate.c3p0.acquire_increment" value="1" />
+			<property name="hibernate.c3p0.idle_test_period" value="30" />
+			<property name="hibernate.c3p0.max_statements" value="50" />
+			<property name="hibernate.c3p0.timeout" value="60" />
+			<!-- Also login to mysql using admin credentials and issue this command 
+				#SET @@GLOBAL.wait_timeout=75 -->
+		</properties>
+	</persistence-unit>
+</persistence>
+

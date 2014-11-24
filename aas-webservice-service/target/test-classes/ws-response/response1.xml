@@ -1,0 +1,6 @@
+<ns2:integ_aas_get_fore_statusResponse xmlns:ns2="http://gov/aas/pagibig/webservice" xmlns:ns3="http://schema.pagibig.aas.gov">
+	<ns2:error>
+		<ns3:error_code>IISP_WS-05_3_10000</ns3:error_code>
+		<ns3:error_message>Foreclose property not found with mid number=? property number=?</ns3:error_message>
+	</ns2:error>
+</ns2:integ_aas_get_fore_statusResponse>

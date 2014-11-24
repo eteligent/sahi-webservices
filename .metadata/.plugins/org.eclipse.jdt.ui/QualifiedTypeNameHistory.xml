@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.springframework.ws.server.endpoint.annotation.Endpoint"/>
+<fullyQualifiedTypeName name="gov.aas.pagibig.service.JournalEntriesService"/>
+<fullyQualifiedTypeName name="gov.aas.pagibig.webservice.IntegGlPostJournalEntriesToGlResponse"/>
+<fullyQualifiedTypeName name="java.io.FileWriter"/>
+<fullyQualifiedTypeName name="gov.aas.pagibig.webservice.IntegGlPostJournalEntriesToGlRequestList"/>
+<fullyQualifiedTypeName name="gov.aas.pagibig.webservice.IntegGlPostJournalEntriesToGlRequest"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="org.apache.commons.net.ftp.FTPClient"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="org.apache.commons.net.PrintCommandListener"/>
+<fullyQualifiedTypeName name="org.apache.commons.net.ftp.FTPReply"/>
+<fullyQualifiedTypeName name="org.apache.commons.net.ftp.FTP"/>
+<fullyQualifiedTypeName name="gov.aas.pagibig.exception.IntegServiceException"/>
+<fullyQualifiedTypeName name="javax.persistence.NamedQuery"/>
+<fullyQualifiedTypeName name="javax.persistence.NamedQueries"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="gov.aas.pagibig.webservice.IntegPostOtcCollectionsAndOtherCollectionsRequest"/>
+<fullyQualifiedTypeName name="gov.aas.pagibig.webservice.IntegPostOtcCollectionsAndOtherCollectionsList"/>
+<fullyQualifiedTypeName name="gov.aas.pagibig.webservice.IntegPostOtcCollectionsAndOtherCollectionsResponse"/>
+<fullyQualifiedTypeName name="org.springframework.ws.server.endpoint.annotation.PayloadRoot"/>
+<fullyQualifiedTypeName name="org.springframework.ws.server.endpoint.annotation.ResponsePayload"/>
+<fullyQualifiedTypeName name="org.springframework.ws.server.endpoint.annotation.RequestPayload"/>
+<fullyQualifiedTypeName name="gov.aas.pagibig.webservice.IntegOtcPostCollectionsAndOtherCollectionsRequest"/>
+<fullyQualifiedTypeName name="gov.aas.pagibig.service.OtcCollectionsAndOtherCollectionsService"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="gov.aas.pagibig.webservice.IntegOtcPostCollectionsAndOtherCollectionsResponse"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="java.io.OutputStream"/>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="gov.aas.pagibig.service.AASServiceUtil"/>
+<fullyQualifiedTypeName name="gov.aas.pagibig.common.exception.IISPException"/>
+<fullyQualifiedTypeName name="gov.aas.pagibig.common.exception.ErrorCode"/>
+<fullyQualifiedTypeName name="gov.aas.pagibig.exception.IntegErrorCode"/>
+<fullyQualifiedTypeName name="gov.aas.pagibig.common.utils.FTPUploaderUtil"/>
+</qualifiedTypeNameHistroy>

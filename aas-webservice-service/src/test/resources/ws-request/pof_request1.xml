@@ -1,0 +1,11 @@
+
+<web:integ_otc_insert_acq_pof_headerRequest
+	xmlns:web="http://gov/aas/pagibig/webservice">
+	<web:pof_no>AB-4523</web:pof_no>
+	<web:pof_date>2014-08-A</web:pof_date>
+	<web:payor_name>?</web:payor_name>
+	<web:pay_mode>?</web:pay_mode>
+	<web:currency_code>?</web:currency_code>
+	<web:user_id>?</web:user_id>
+	<web:insert>false</web:insert>
+</web:integ_otc_insert_acq_pof_headerRequest>

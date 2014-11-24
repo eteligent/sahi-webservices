@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schema.pagibig.aas.gov" targetNamespace="http://schema.pagibig.aas.gov" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<xs:complexType name="integ_aas_get_fore_statusType">
+		<xs:sequence>
+			<xs:element name="source_sys_id" type="xs:string" />
+			<xs:element name="user_name" type="xs:string"/>
+			<xs:element name="Password" type="xs:string"/>
+			<xs:element name="Mid" type="xs:string"/>
+			<xs:element name="Prop_No" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<!-- generic element to indicate yes/no, success,failure -->
+	<xs:simpleType name="status">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>	
+	
+	<xs:complexType name="errorType">
+		<xs:sequence>
+			<xs:element name="error_code" type="xs:string" />
+			<xs:element name="error_message" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>

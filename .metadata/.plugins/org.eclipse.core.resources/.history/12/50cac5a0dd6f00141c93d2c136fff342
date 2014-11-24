@@ -1,0 +1,22 @@
+package gov.aas.pagibig.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import gov.aas.pagibig.webservice.IntegPostOtcCollectionsAndOtherCollectionsRequest;
+import gov.aas.pagibig.webservice.IntegPostOtcCollectionsAndOtherCollectionsResponse;
+
+@Service
+public class OtcCollectionsAndOtherCollectionsServiceImpl implements OtcCollectionsAndOtherCollectionsService{
+
+	@Override
+	public IntegPostOtcCollectionsAndOtherCollectionsResponse postOtcCollections(
+			IntegPostOtcCollectionsAndOtherCollectionsRequest request) {
+		List<String> headers = new ArrayList<String>();
+		headers.add("");
+		return null;
+	}
+
+}

@@ -1,0 +1,16 @@
+package gov.aas.pagibig.service;
+
+import gov.aas.pagibig.webservice.IntegPostOtcCollectionsAndOtherCollectionsRequest;
+import gov.aas.pagibig.webservice.IntegPostOtcCollectionsAndOtherCollectionsResponse;
+
+@Service
+public class OtcCollectionsAndOtherCollectionsServiceImpl implements OtcCollectionsAndOtherCollectionsService{
+
+	@Override
+	public IntegPostOtcCollectionsAndOtherCollectionsResponse postOtcCollections(
+			IntegPostOtcCollectionsAndOtherCollectionsRequest request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

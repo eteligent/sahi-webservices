@@ -1,0 +1,7 @@
+INDEX VERSION 1.3+D:\pagibig\aas-webservice\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+186161625.index
+2824881961.index
+3992611549.index
+3644238582.index
+959356587.index
+1673575100.index

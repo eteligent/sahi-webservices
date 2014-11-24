@@ -1,0 +1,5 @@
+package gov.aas.pagibig.service.endpoints;
+
+public class PostOtcCollectionsAndOtherCollectionsEndpoint {
+
+}

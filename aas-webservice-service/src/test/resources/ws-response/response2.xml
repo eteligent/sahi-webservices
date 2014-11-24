@@ -1,0 +1,3 @@
+      <ns2:integ_aas_get_fore_statusResponse xmlns:ns2="http://gov/aas/pagibig/webservice" xmlns:ns3="http://schema.pagibig.aas.gov">
+         <ns2:status>1</ns2:status>
+      </ns2:integ_aas_get_fore_statusResponse>

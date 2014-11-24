@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommitComments>	<CommitComment>added request &amp; response to otc post</CommitComment>
+	<CommitComment>added error handling</CommitComment>
+	<CommitComment>Added OTC post collection</CommitComment>
+	<CommitComment>Added error handling</CommitComment>
+	<CommitComment>Added FTP upload</CommitComment>
+	<CommitComment>Created csv generation</CommitComment>
+	<CommitComment>removed catalog</CommitComment>
+	<CommitComment>Removed primary key constraint of system_id on table users</CommitComment>
+	<CommitComment>Changed data type of system_id from varchar to int. to be able to enforce references</CommitComment>
+	<CommitComment>updated ERD</CommitComment>
+</CommitComments>

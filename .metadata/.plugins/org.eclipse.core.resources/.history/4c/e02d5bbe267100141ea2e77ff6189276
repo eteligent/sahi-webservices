@@ -1,0 +1,14 @@
+package gov.aas.pagibig.service;
+
+import gov.aas.pagibig.webservice.IntegApRequestForPaymentRequest;
+import gov.aas.pagibig.webservice.IntegApRequestForPaymentResponse;
+
+public class RequestForPaymentServiceImpl implements RequestForPaymentService{
+
+	@Override
+	public IntegApRequestForPaymentResponse requestForPayment(
+			IntegApRequestForPaymentRequest request) {
+		
+	}
+
+}

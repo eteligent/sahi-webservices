@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sws="http://www.springframework.org/schema/web-services"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd   
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd   
+       http://www.springframework.org/schema/jee 
+       http://www.springframework.org/schema/jee/spring-jee-3.0.xsd   
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+       http://www.springframework.org/schema/web-services
+	http://www.springframework.org/schema/web-services/web-services-2.0.xsd">
+	
+	<context:component-scan base-package="gov.aas.pagibig.service, gov.aas.pagibig.dao" />
+    
+    <bean id="exceptionResolver"
+        class="org.springframework.ws.soap.server.endpoint.SoapFaultMappingExceptionResolver">
+        <property name="defaultFault" value="SERVER"/>
+        <property name="exceptionMappings">
+            <value>
+                org.springframework.oxm.ValidationFailureException=CLIENT,Invalid request,en
+                java.lang.NullPointerException=SERVER,Invalid Request,en
+                java.lang.Exception=SERVER,Invalid Request,en
+            </value>
+        </property>
+    </bean>
+    
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="aasPU" />
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<bean
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="AASWebService"
+		class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition"
+		lazy-init="true">
+		<property name="schemaCollection">
+			<bean
+				class="org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection">
+				<property name="inline" value="true" />
+				<property name="xsds">
+					<list>
+						<value>classpath*:schemas/aas-webserviceOperations.xsd</value>
+					</list>
+				</property>
+			</bean>
+		</property>
+		<property name="portTypeName" value="AASWebService" />
+		<property name="serviceName" value="AASWebServices" />
+		<property name="locationUri" value="/endpoints" />
+	</bean>
+
+	<sws:interceptors>
+		<!-- we want to log all request and response -->
+		<bean
+			class="gov.aas.pagibig.service.endpoints.AASSoapEnvelopeLoggingInterceptor" />
+	</sws:interceptors>
+	<sws:annotation-driven />
+</beans>

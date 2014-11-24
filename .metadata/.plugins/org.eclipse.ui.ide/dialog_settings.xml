@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ChooseWorkspaceDialogSettings">
+		<item value="206" key="DIALOG_Y_ORIGIN"/>
+		<item value="338" key="DIALOG_X_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
+		<item value="false" key="ShowDerived"/>
+		<item value="true" key="ShowStatusLine"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;" key="WorkingSet"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-service/src/main/webapp/WEB-INF/web.xml&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-service/src/main/java/gov/aas/pagibig/dao/TBLPtnStatusDao.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-core/src/main/java/gov/aas/pagibig/webservice/core/TBLPtnStatus.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-core/src/test/resources/reveng/model.reveng.xml&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-service/src/main/java/gov/aas/pagibig/service/endpoints/PostJournalEntriesToGLEndpoint.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-service/src/main/resources/META-INF/applicationConfig-ws.xml&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-core/src/main/resources/META-INF/persistence.xml&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-service/src/main/java/gov/aas/pagibig/service/AASServiceUtil.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-schema/src/main/java/gov/aas/pagibig/schema/ErrorType.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/webservice-common/src/main/java/gov/aas/pagibig/common/exception/ErrorCode.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-service/src/main/java/gov/aas/pagibig/service/BranchPfrNoSeriesServiceImpl.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/webservice-common/pom.xml&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-core/pom.xml&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-schema/pom.xml&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-service/pom.xml&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-service/src/main/java/gov/aas/pagibig/exception/IntegServiceException.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-service/src/main/java/gov/aas/pagibig/exception/IntegErrorCode.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/webservice-common/src/main/java/gov/aas/pagibig/common/exception/IISPException.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-service/src/main/java/gov/aas/pagibig/service/endpoints/PostOtcCollectionsAndOtherCollectionsEndpoint.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-schema/src/main/resources/schemas/aas-webserviceOperations.xsd&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-service/src/main/java/gov/aas/pagibig/dao/TBLInsertPofDetailsDAOImpl.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-service/src/main/java/gov/aas/pagibig/dao/TBLUpdatePofStatusDAOImpl.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-schema/src/main/java/gov/aas/pagibig/webservice/IntegOtcPostCollectionsAndOtherCollectionsRequest.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-service/src/main/java/gov/aas/pagibig/service/JournalEntriesServiceImpl.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-service/src/main/java/gov/aas/pagibig/service/RequestForPaymentServiceImpl.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-service/src/main/java/gov/aas/pagibig/service/PostPdcpaymStatusServiceImpl.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/aas-webservice-service/src/main/java/gov/aas/pagibig/service/OtcCollectionsAndOtherCollectionsServiceImpl.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/webservice-common/src/main/java/gov/aas/pagibig/common/utils/FTPUploaderUtil.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;/historyRootNode&gt;&#x0D;&#x0A;&lt;/History&gt;" key="History"/>
+		<section name="DialogBoundsSettings">
+			<item value="600" key="DIALOG_WIDTH"/>
+			<item value="207" key="DIALOG_Y_ORIGIN"/>
+			<item value="621" key="DIALOG_X_ORIGIN"/>
+			<item value="500" key="DIALOG_HEIGHT"/>
+			<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		</section>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
+	</section>
+	<section name="CleanDialogSettings">
+		<item value="500" key="DIALOG_WIDTH"/>
+		<item value="134" key="DIALOG_Y_ORIGIN"/>
+		<item value="377" key="DIALOG_HEIGHT"/>
+		<item value="390" key="DIALOG_X_ORIGIN"/>
+		<item value="false" key="TOGGLE_SELECTED"/>
+	</section>
+	<section name="NewWizardAction">
+	</section>
+</section>

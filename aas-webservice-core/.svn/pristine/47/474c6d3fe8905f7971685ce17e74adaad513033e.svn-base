@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering 
+  SYSTEM "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+
+	<!-- Warning: Before you change anything here, make sure you read this first 
+		- jowel 
+		1.) http://docs.jboss.org/tools/latest/en/hibernatetools/html/reverseengineering.html 
+		
+		Oracle setup 
+		2.) http://stackoverflow.com/questions/2083727/how-to-configure-maven-hbm2hbmxml-and-hbm2java-to-run-one-after-the-other-in-mvn -->
+
+	<table-filter match-catalog="db_integ_aas" match-name=".*"
+		package="gov.aas.pagibig.webservice.core.generated" />
+	
+	<table catalog="db_integ_aas" name="tb_validate_foreclose_paym" class="TBLForeClosedProperty">
+		<column name="Mid" property="pagibigMid" />
+		<column name="Prop_No" property="propertyNumber" />
+	</table>
+	<table catalog="db_integ_aas" name="tb_insert_pof_header" class="TBLPaymentOrderForm"/>
+</hibernate-reverse-engineering>
