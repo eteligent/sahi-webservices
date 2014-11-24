@@ -22,8 +22,8 @@ import javax.persistence.NamedQuery;
     , uniqueConstraints = @UniqueConstraint(columnNames="pof_no") 
 )
 @NamedQueries
-({@NamedQuery( name = "TBLUpdatePofStatus.updPOFStat", query = "FROM TBLUpdatePofStatus tbl WHERE tbl.pofNo=:pofNo" )
-, @NamedQuery( name = "TBLUpdatePofStatus.checkPofStat", query = "FROM TBLUpdatePofStatus tbl WHERE tbl.pofNo=:pofNo AND tbl.payorName=:payorName AND tbl.src=:src" )
+({@NamedQuery( name = "TBLUpdatePofStatus.updPOFStat", query = "SELECT tbl FROM TBLUpdatePofStatus tbl WHERE tbl.pofNo=:pofNo" )
+, @NamedQuery( name = "TBLUpdatePofStatus.checkPofStat", query = "SELECT tbl FROM TBLUpdatePofStatus tbl WHERE tbl.pofNo=:pofNo AND tbl.payorName=:payorName AND tbl.src=:src" )
 })   
 public class TBLUpdatePofStatus  implements java.io.Serializable {
 
