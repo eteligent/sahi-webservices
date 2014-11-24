@@ -650,13 +650,14 @@
 			<xsd:sequence>
 				<xsd:element name="hdr_invoice_num" type="xsd:string" />
 				<xsd:element name="hdr_invoice_type_lookup_code" type="xsd:string"/>
-				<xsd:element name = "hdr_invoice_date" type = "xsd:string"/>
+				<xsd:element name = "hdr_invoice_date" type = "xsd:date"/>
 				<xsd:element name = "hdr_vendor_num" type = "xsd:string"/>
 				<xsd:element name = "hdr_vendor_site_code" type = "xsd:string"/>
 				<xsd:element name = "hdr_invoice_amount" type = "xsd:decimal"/>
 				<xsd:element name = "hdr_description" type = "xsd:string"/>
-				<xsd:element name = "hdr_goods_received_date" type = "xsd:string"/>
-				<xsd:element name = "hdr_gl_date" type = "xsd:string"/>
+				<xsd:element name = "hdr_goods_received_date" type = "xsd:date"/>
+				<xsd:element name = "hdr_invoice_received_date" type = "xsd:date" />
+				<xsd:element name = "hdr_gl_date" type = "xsd:date"/>
 				<xsd:element name = "hdr_source" type = "xsd:string"/>
 				<xsd:element name = "dtl_line_number" type = "xsd:string"/>
 				<xsd:element name = "dtl_amount" type = "xsd:double"/>

@@ -24,6 +24,7 @@ public class RequestForPaymentEndpoint {
 	@PayloadRoot(localPart = "integ_ap_request_for_paymentRequest", namespace = TARGET_NAMESPACE)
 	public @ResponsePayload IntegApRequestForPaymentResponse requestForPayment(@RequestPayload IntegApRequestForPaymentRequest request){
 		logger.info("Entering REQUEST FOR PAYMENT WS");
+		logger.info("THIS " + request.getIntegApRequestForPaymentList().get(0).getDtlAmount());
 		IntegApRequestForPaymentResponse response = rfpServiceImpl.requestForPayment(request);
 		logger.info("Exiting REQUEST FOR PAYMENT WS");
 		return response;
