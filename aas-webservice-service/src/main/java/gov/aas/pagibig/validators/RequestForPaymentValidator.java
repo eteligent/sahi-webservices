@@ -22,6 +22,7 @@ public final class RequestForPaymentValidator {
 			IISPValidatorUtil.isEmpty(apList.getHdrVendorSiteCode(), "HDR VENDOR SITE CODE");
 			IISPValidatorUtil.isEmpty(apList.getHdrDescription(), "HDR DESCRIPTION");
 			IISPValidatorUtil.validateDate(apList.getHdrGlDate(), "HDR GL DATE");
+			IISPValidatorUtil.validateAmount(apList.getHdrInvoiceAmount(), "HDR INVOICE AMOUNT");
 			IISPValidatorUtil.validateDate(apList.getHdrInvoiceDate(), "HDR INVOICE DATE");
 			IISPValidatorUtil.validateDate(apList.getHdrGoodsReceivedDate(), "HDR GOODS RECEIVED DATE");
 			IISPValidatorUtil.isEmpty(apList.getBranchCode(), "BRANCH CODE");
@@ -32,6 +33,16 @@ public final class RequestForPaymentValidator {
 			IISPValidatorUtil.isEmpty(apList.getDtlLineTypeLookupCode(), "DTL LINE TYPE LOOK UP CODE");
 			IISPValidatorUtil.isEmpty(apList.getDtlDrCompany(), "DTL DR COMPANY");
 			IISPValidatorUtil.isEmpty(apList.getDtlDrBranchOrOffice(), "DTL DR BRANCH/OFFICE");
+			IISPValidatorUtil.isEmpty(apList.getDtlDrActivityCode(), "DTL DR ACTIVITY CODE");
+			IISPValidatorUtil.isEmpty(apList.getDtlDrCostClassification(), "DTL DR COST CLASSIFICATION");
+			IISPValidatorUtil.isEmpty(apList.getDtlDrGlAccount(), "DTL DR GL ACCOUNT");
+			IISPValidatorUtil.isEmpty(apList.getDtlDrFutureAccount(), "DTL DR FUTURE ACCOUNT");
+			IISPValidatorUtil.isEmpty(apList.getDtlDrFutureAccount2(), "DTL DR FUTURE ACCOUNT 2");
+			IISPValidatorUtil.validateAmount(apList.getDtlDrAmount(), "DTL DR AMOUNT");
+			IISPValidatorUtil.isEmpty(apList.getHdrCurrCode(), "HDR CURR CODE");
+			IISPValidatorUtil.isEmpty(apList.getPaymentTermsCode(), "PAYMENT TERMS CODE");
+			IISPValidatorUtil.isEmpty(apList.getBranchCode(), "BRANCH CODE");
+			IISPValidatorUtil.isEmpty(apList.getTransactionId(),"TRANSACTION ID");
 		}
 	}
 }

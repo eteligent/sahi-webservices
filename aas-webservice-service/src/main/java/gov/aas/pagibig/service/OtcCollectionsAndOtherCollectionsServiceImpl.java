@@ -30,26 +30,7 @@ public class OtcCollectionsAndOtherCollectionsServiceImpl implements
 	@Override
 	public IntegOtcPostCollectionsAndOtherCollectionsResponse postOtcCollections(
 			IntegOtcPostCollectionsAndOtherCollectionsRequest request) {
-		List<String> headers = new ArrayList<String>();
 		IntegOtcPostCollectionsAndOtherCollectionsResponse response = new IntegOtcPostCollectionsAndOtherCollectionsResponse();
-		/*headers.add("HDR_RECEIPT_NO");
-		headers.add("HDR_RECEIPT_DATE");
-		headers.add("HDR_AMOUNT");
-		headers.add("HDR_GL_DATE");
-		headers.add("HDR_RECEIPT_METHOD_NAME");
-		headers.add("HDR_CUSTOMER_NUMBER");
-		headers.add("HDR_LOCATION_CODE");
-		headers.add("HDR_CUSTOMER_NAME");
-		headers.add("HDR_LOCATION_NAME");
-		headers.add("HDR_CURRENCY_CODE");
-		headers.add("DTL_INVOICE_NUMBER");
-		headers.add("DTL_RECEIVABLE_ACTIVITY");
-		headers.add("DTL_DESCRIPTION");
-		headers.add("DTL_BANK_NAME");
-		headers.add("DTL_CHECK_NUMBER");
-		headers.add("FILENAME");
-		headers.add("BRANCH_CODE");
-		headers.add("TRANSACTION_ID");*/
 
 		File file = new File("temp", "files");
 		file.mkdirs();
@@ -62,14 +43,6 @@ public class OtcCollectionsAndOtherCollectionsServiceImpl implements
 
 			List<IntegOtcPostCollectionsAndOtherCollectionsList> list = request
 					.getIntegOtcPostCollectionsAndOtherCollectionsList();
-
-			for (int index = 0; index < headers.size(); ++index) {
-				if (index == headers.size() - 1) {
-					writer.append(headers.get(index) + "\n");
-				} else {
-					writer.append(headers.get(index) + "|");
-				}
-			}
 			for (IntegOtcPostCollectionsAndOtherCollectionsList collection : list) {
 				writer.append(collection.getHdrReceiptNo() + "|");
 				writer.append(collection.getHdrReceiptDate() + "|");
@@ -85,7 +58,6 @@ public class OtcCollectionsAndOtherCollectionsServiceImpl implements
 				writer.append(collection.getDtlReceivableActivity() + "|");
 				writer.append(collection.getDtlBankName() + "|");
 				writer.append(collection.getDtlCheckNumber() + "|");
-				writer.append("File Name Here");
 				writer.append(collection.getBranchCode() + "|");
 				writer.append(collection.getTransactionId() + "\n");
 				branchCode = collection.getBranchCode(); 

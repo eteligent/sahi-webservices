@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import gov.aas.pagibig.common.exception.IISPException;
 import gov.aas.pagibig.common.utils.FTPUploaderUtil;
 import gov.aas.pagibig.exception.IntegErrorCode;
+import gov.aas.pagibig.validators.JournalEntryValidator;
 import gov.aas.pagibig.webservice.IntegGlPostJournalEntriesToGlRequest;
 import gov.aas.pagibig.webservice.IntegGlPostJournalEntriesToGlRequestList;
 import gov.aas.pagibig.webservice.IntegGlPostJournalEntriesToGlResponse;
@@ -32,28 +33,8 @@ public class JournalEntriesServiceImpl implements JournalEntriesService {
 		File file = new File("temp", "files");
 		file.mkdirs();
 		// For now.. to be refactored
-		List<String> headers = new ArrayList<String>();
-		/*headers.add("ACCTG_DATE");
-		headers.add("ACCTG_TYPE");
-		headers.add("SEGMENT1");
-		headers.add("SEGMENT2");
-		headers.add("SEGMENT3");
-		headers.add("SEGMENT4");
-		headers.add("SEGMENT5");
-		headers.add("SEGMENT6");
-		headers.add("SEGMENT7");
-		headers.add("SEGMENT8");
-		headers.add("SEGMENT9");
-		headers.add("SEGMENT10");
-		headers.add("JOURNAL_NAME");
-		headers.add("CATEGORY_NAME");
-		headers.add("CURRENCY_CODE");
-		headers.add("AMOUNT");
-		headers.add("REFERENCES/DESC");
-		headers.add("FILENAME");
-		headers.add("BRANCH_C0DE");
-		headers.add("TRANSACTION_ID");*/
 		try {
+			JournalEntryValidator validator = new JournalEntryValidator(request);
 			String fileName = "";
 			String branchCode = "";
 			File file2 = File.createTempFile("temp",
@@ -61,14 +42,6 @@ public class JournalEntriesServiceImpl implements JournalEntriesService {
 			FileWriter writer = new FileWriter(file2);
 			List<IntegGlPostJournalEntriesToGlRequestList> list = request
 					.getIntegGlPostJournalEntriesToGlRequestList();
-			// Append first the headers
-			for (int index = 0; index < headers.size(); ++index) {
-				if (index == headers.size() - 1) {
-					writer.append(headers.get(index) + "\n");
-				} else {
-					writer.append(headers.get(index) + "|");
-				}
-			}
 			for (IntegGlPostJournalEntriesToGlRequestList entry : list) {
 				writer.append(entry.getAcctgDate() + "|");
 				writer.append(entry.getAccountType() + "|");

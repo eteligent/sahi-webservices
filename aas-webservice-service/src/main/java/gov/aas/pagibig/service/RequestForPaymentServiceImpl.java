@@ -55,7 +55,7 @@ public class RequestForPaymentServiceImpl implements RequestForPaymentService {
 				writer.append(apRequest.getHdrInvoiceAmount() + "|");
 				writer.append(apRequest.getHdrDescription() + "|");
 				writer.append(apRequest.getHdrGoodsReceivedDate() + "|");
-				writer.append(apRequest.getHdrInvoiceDate() + "|");
+				writer.append(apRequest.getHdrInvoiceReceivedDate() + "|");
 				writer.append(apRequest.getHdrGlDate() + "|");
 				writer.append(apRequest.getHdrSource() + "|");
 				writer.append(apRequest.getDtlLineNumber() + "|");
