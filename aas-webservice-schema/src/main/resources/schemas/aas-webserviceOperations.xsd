@@ -542,6 +542,7 @@
 				<xsd:element name="source_sys_id" type="xsd:string" />
 				<xsd:element name="user_name" type="xsd:string" />
 				<xsd:element name="Password" type="xsd:string" />
+				<xsd:element name="branch_code" type="xsd:string" />
 				<xsd:element maxOccurs="unbounded"
 					ref="integ_gl_post_journal_entries_to_gl_request_list" />
 			</xsd:sequence>
@@ -550,7 +551,7 @@
 	<xsd:element name="integ_gl_post_journal_entries_to_gl_request_list">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="acctg_date" type="xsd:string" />
+				<xsd:element name="acctg_date" type="xsd:date" />
 				<xsd:element name="account_type" type="xsd:string" />
 				<xsd:element name="segment1" type="xsd:string" />
 				<xsd:element name="segment2" type="xsd:string" />
@@ -565,9 +566,8 @@
 				<xsd:element name="journal_name" type="xsd:string" />
 				<xsd:element name="category_name" type="xsd:string" />
 				<xsd:element name="currency_code" type="xsd:string" />
-				<xsd:element name="amount" type="xsd:string" />
+				<xsd:element name="amount" type="xsd:double" />
 				<xsd:element name="references_or_description" type="xsd:string" />
-				<xsd:element name="branch_code" type="xsd:string" />
 				<xsd:element name="transaction_id" type="xsd:string" />
 			</xsd:sequence>
 		</xsd:complexType>
@@ -591,6 +591,7 @@
 				<xsd:element name="source_sys_id" type="xsd:string" />
 				<xsd:element name="user_name" type="xsd:string" />
 				<xsd:element name="Password" type="xsd:string" />
+				<xsd:element name="branch_code" type="xsd:string" />
 				<xsd:element maxOccurs="unbounded"
 					ref="integ_otc_post_collections_and_other_collections_list" />
 			</xsd:sequence>
@@ -601,9 +602,9 @@
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="hdr_receipt_no" type="xsd:string" />
-				<xsd:element name="hdr_receipt_date" type="xsd:string" />
-				<xsd:element name="hdr_amount" type="xsd:decimal" />
-				<xsd:element name="hdr_gl_date" type="xsd:string" />
+				<xsd:element name="hdr_receipt_date" type="xsd:date" />
+				<xsd:element name="hdr_amount" type="xsd:double" />
+				<xsd:element name="hdr_gl_date" type="xsd:date" />
 				<xsd:element name="hdr_receipt_method_name" type="xsd:string" />
 				<xsd:element name="hdr_customer_number" type="xsd:string" />
 				<xsd:element name="hdr_location_code" type="xsd:string" />
@@ -615,7 +616,6 @@
 				<xsd:element name="dtl_description" type="xsd:string" />
 				<xsd:element name="dtl_bank_name" type="xsd:string" />
 				<xsd:element name="dtl_check_number" type="xsd:string" />
-				<xsd:element name="branch_code" type="xsd:string" />
 				<xsd:element name="transaction_id" type="xsd:string" />
 			</xsd:sequence>
 		</xsd:complexType>
@@ -640,6 +640,7 @@
 				<xsd:element name="source_sys_id" type="xsd:string" />
 				<xsd:element name="user_name" type="xsd:string" />
 				<xsd:element name="Password" type="xsd:string" />
+				<xsd:element name="branch_code" type="xsd:string" />
 				<xsd:element maxOccurs="unbounded" ref="integ_ap_request_for_payment_list" />
 			</xsd:sequence>
 		</xsd:complexType>
@@ -653,7 +654,7 @@
 				<xsd:element name = "hdr_invoice_date" type = "xsd:date"/>
 				<xsd:element name = "hdr_vendor_num" type = "xsd:string"/>
 				<xsd:element name = "hdr_vendor_site_code" type = "xsd:string"/>
-				<xsd:element name = "hdr_invoice_amount" type = "xsd:decimal"/>
+				<xsd:element name = "hdr_invoice_amount" type = "xsd:double"/>
 				<xsd:element name = "hdr_description" type = "xsd:string"/>
 				<xsd:element name = "hdr_goods_received_date" type = "xsd:date"/>
 				<xsd:element name = "hdr_invoice_received_date" type = "xsd:date" />
@@ -669,7 +670,7 @@
 				<xsd:element name = "dtl_dr_gl_account" type = "xsd:string"/>			
 				<xsd:element name = "dtl_dr_future_account" type = "xsd:string"/>
 				<xsd:element name = "dtl_dr_future_account2" type = "xsd:string"/>
-				<xsd:element name = "dtl_dr_amount" type = "xsd:decimal"/>
+				<xsd:element name = "dtl_dr_amount" type = "xsd:double"/>
 				<xsd:element name = "dtl_reference_number" type = "xsd:string"/>
 				<xsd:element name = "dtl_cr_company" type = "xsd:string"/>
 				<xsd:element name = "dtl_cr_branch_or_office" type = "xsd:string"/>
@@ -683,7 +684,6 @@
 				<xsd:element name = "hdr_curr_code" type = "xsd:string" />
 				<xsd:element name = "payment_terms_code" type = "xsd:string" />
 				<xsd:element name = "filename" type = "xsd:string"/>
-				<xsd:element name = "branch_code" type = "xsd:string" />
 				<xsd:element name = "transaction_id" type = "xsd:string" />
 			</xsd:sequence>
 		</xsd:complexType>

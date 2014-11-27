@@ -2,13 +2,17 @@ package gov.aas.pagibig.webservice.core;
 // Generated Oct 21, 2014 9:52:07 AM by Hibernate Tools 3.2.2.GA
 
 import static javax.persistence.GenerationType.IDENTITY;
+
 import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -41,9 +45,14 @@ public class TBLInsertPofDetails  implements java.io.Serializable {
       this.amount = amount;
    }
   
-    @Id @GeneratedValue(strategy=IDENTITY)
+   /* for mysql @Id @GeneratedValue(strategy=IDENTITY)
    
-   @Column(name="id", unique=true, nullable=false)
+   @Column(name="id", unique=true, nullable=false)*/
+   
+   @Id
+   @Column(name = "ID")
+   @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
+   @SequenceGenerator(name = "id_Sequence", sequenceName = "sq_pof_id")
    public Integer getId() {
        return this.id;
    }
