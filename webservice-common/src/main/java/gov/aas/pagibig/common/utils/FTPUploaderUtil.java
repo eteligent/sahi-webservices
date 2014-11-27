@@ -17,8 +17,8 @@ import org.apache.commons.net.ftp.FTPReply;
 public final class FTPUploaderUtil {
 	
 	private static final String HOST = "192.168.128.106";
-	private static final String USERNAME = "root";
-	private static final String PASSWORD = "passw0rd";
+	private static final String USERNAME = "appluat"; //apluat
+	private static final String PASSWORD = "hdmfuat407"; //heheohohhihihuhu
 	
 	public static void uploadGL(File file,String fileName) throws SocketException, IOException, IISPException{
 			FTPClient ftp = new FTPClient();
@@ -67,7 +67,7 @@ public final class FTPUploaderUtil {
 		ftp.enterLocalPassiveMode();
 		
 		//Uploading of file
-		ftp.changeWorkingDirectory("/var/XXAPPS/XXAP_INTERFACE/HO/data");
+		ftp.changeWorkingDirectory("/var/XXAPPS/XXAR_INTERFACE/payment/HO/data");
 		InputStream input = new FileInputStream(file);
 		ftp.storeFile(fileName,input);
 		if(!isPositiveReply(ftp)){
