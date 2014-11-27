@@ -14,6 +14,7 @@ public final class RequestForPaymentValidator {
 	}
 	public void validate() throws IntegServiceException{
 		IISPValidatorUtil.isEmpty(request.getSourceSysId(), "SOURCE SYSTEM");
+		IISPValidatorUtil.isEmpty(request.getBranchCode(), "BRANCH CODE");
 		List<IntegApRequestForPaymentList> list = request.getIntegApRequestForPaymentList(); 
 		for(IntegApRequestForPaymentList apList : list){
 			IISPValidatorUtil.isEmpty(apList.getHdrInvoiceNum(), "HDR INVOICE NUMBER");
@@ -25,7 +26,6 @@ public final class RequestForPaymentValidator {
 			IISPValidatorUtil.validateAmount(apList.getHdrInvoiceAmount(), "HDR INVOICE AMOUNT");
 			IISPValidatorUtil.validateDate(apList.getHdrInvoiceDate(), "HDR INVOICE DATE");
 			IISPValidatorUtil.validateDate(apList.getHdrGoodsReceivedDate(), "HDR GOODS RECEIVED DATE");
-			IISPValidatorUtil.isEmpty(apList.getBranchCode(), "BRANCH CODE");
 			IISPValidatorUtil.validateAmount(apList.getDtlAmount(), "DTL AMOUNT");
 			IISPValidatorUtil.validateDate(apList.getHdrInvoiceDate(), "HDR INVOICE RECEIVED DATE");
 			IISPValidatorUtil.isEmpty(apList.getHdrSource(), "HDR SOURCE");
@@ -41,7 +41,6 @@ public final class RequestForPaymentValidator {
 			IISPValidatorUtil.validateAmount(apList.getDtlDrAmount(), "DTL DR AMOUNT");
 			IISPValidatorUtil.isEmpty(apList.getHdrCurrCode(), "HDR CURR CODE");
 			IISPValidatorUtil.isEmpty(apList.getPaymentTermsCode(), "PAYMENT TERMS CODE");
-			IISPValidatorUtil.isEmpty(apList.getBranchCode(), "BRANCH CODE");
 			IISPValidatorUtil.isEmpty(apList.getTransactionId(),"TRANSACTION ID");
 		}
 	}

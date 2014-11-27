@@ -39,13 +39,24 @@ public class RequestForPaymentServiceImpl implements RequestForPaymentService {
 			RequestForPaymentValidator validator = new RequestForPaymentValidator(request);
 			validator.validate();
 			String fileName = "";
-			String branchCode = "";
 			File file2 = File.createTempFile("temp",
 					"." + request.getSourceSysId(), file);
 			FileWriter writer = new FileWriter(file2);
-			
+			writer.append(request.getBranchCode() + "|");
 			List<IntegApRequestForPaymentList> list = request.getIntegApRequestForPaymentList();
-			
+			//generate filename
+			String branchCode = request.getBranchCode();
+			Date date = new Date();
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(date);
+			String year = new SimpleDateFormat("yy").format(date);
+			String month = new SimpleDateFormat("MM").format(date);
+			String day = new SimpleDateFormat("dd").format(date);
+			String hour = new SimpleDateFormat("HH").format(date);
+			String minutes = new SimpleDateFormat("mm").format(date);
+			String seconds = new SimpleDateFormat("ss").format(date);
+			fileName = branchCode + year + month + day + hour + minutes
+					+ seconds + "." + request.getSourceSysId();
 			for(IntegApRequestForPaymentList apRequest : list){
 				writer.append(apRequest.getHdrInvoiceNum() + "|");
 				writer.append(apRequest.getHdrInvoiceTypeLookupCode() + "|");
@@ -79,21 +90,9 @@ public class RequestForPaymentServiceImpl implements RequestForPaymentService {
 				writer.append(apRequest.getDtlWhiteCode() + "|");
 				writer.append(apRequest.getHdrCurrCode() + "|");
 				writer.append(apRequest.getPaymentTermsCode() + "|");
-				writer.append(apRequest.getFilename() + "|");
-				writer.append(apRequest.getBranchCode() + "|");
-				writer.append(apRequest.getTransactionId() + "|");
+				writer.append(fileName + "\n");
+				//writer.append(apRequest.getTransactionId() + "|");
 			}
-			Date date = new Date();
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(date);
-			String year = new SimpleDateFormat("yy").format(date);
-			String month = new SimpleDateFormat("MM").format(date);
-			String day = new SimpleDateFormat("dd").format(date);
-			String hour = new SimpleDateFormat("HH").format(date);
-			String minutes = new SimpleDateFormat("mm").format(date);
-			String seconds = new SimpleDateFormat("ss").format(date);
-			fileName = branchCode + year + month + day + hour + minutes
-					+ seconds + "." + request.getSourceSysId();
 			writer.close();
 			File finalFile = new File("../temp/rfp/" + fileName);
 			copyFileUsingFileStreams(file2, finalFile);

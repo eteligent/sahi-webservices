@@ -35,11 +35,24 @@ public class JournalEntriesServiceImpl implements JournalEntriesService {
 		// For now.. to be refactored
 		try {
 			JournalEntryValidator validator = new JournalEntryValidator(request);
+			validator.validate();
 			String fileName = "";
-			String branchCode = "";
 			File file2 = File.createTempFile("temp",
 					"." + request.getSourceSysId(), file);
 			FileWriter writer = new FileWriter(file2);
+			String branchCode = request.getBranchCode();
+			//generate file name
+			Date date = new Date();
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(date);
+			String year = new SimpleDateFormat("yy").format(date);
+			String month = new SimpleDateFormat("MM").format(date);
+			String day = new SimpleDateFormat("dd").format(date);
+			String hour = new SimpleDateFormat("HH").format(date);
+			String minutes = new SimpleDateFormat("mm").format(date);
+			String seconds = new SimpleDateFormat("ss").format(date);
+			fileName = branchCode + year + month + day + hour + minutes
+					+ seconds + "." + request.getSourceSysId();
 			List<IntegGlPostJournalEntriesToGlRequestList> list = request
 					.getIntegGlPostJournalEntriesToGlRequestList();
 			for (IntegGlPostJournalEntriesToGlRequestList entry : list) {
@@ -60,21 +73,8 @@ public class JournalEntriesServiceImpl implements JournalEntriesService {
 				writer.append(entry.getCurrencyCode() + "|");
 				writer.append(entry.getAmount() + "|");
 				writer.append(entry.getReferencesOrDescription() + "|");
-				writer.append(entry.getBranchCode() + "|");
-				writer.append(entry.getTransactionId() + "\n");
-				branchCode = entry.getBranchCode();
+				writer.append(fileName + "\n");
 			}
-			Date date = new Date();
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(date);
-			String year = new SimpleDateFormat("yy").format(date);
-			String month = new SimpleDateFormat("MM").format(date);
-			String day = new SimpleDateFormat("dd").format(date);
-			String hour = new SimpleDateFormat("HH").format(date);
-			String minutes = new SimpleDateFormat("mm").format(date);
-			String seconds = new SimpleDateFormat("ss").format(date);
-			fileName = branchCode + year + month + day + hour + minutes
-					+ seconds + "." + request.getSourceSysId();
 			// close writer
 			writer.close();
 			copyFileUsingFileStreams(file2, new File("../temp/gl/" + fileName));

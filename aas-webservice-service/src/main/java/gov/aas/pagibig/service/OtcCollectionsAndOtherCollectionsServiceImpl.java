@@ -19,6 +19,7 @@ import gov.aas.pagibig.common.exception.ErrorCode;
 import gov.aas.pagibig.common.exception.IISPException;
 import gov.aas.pagibig.common.utils.FTPUploaderUtil;
 import gov.aas.pagibig.exception.IntegErrorCode;
+import gov.aas.pagibig.validators.OtcCollectionValidator;
 import gov.aas.pagibig.webservice.IntegOtcPostCollectionsAndOtherCollectionsList;
 import gov.aas.pagibig.webservice.IntegOtcPostCollectionsAndOtherCollectionsRequest;
 import gov.aas.pagibig.webservice.IntegOtcPostCollectionsAndOtherCollectionsResponse;
@@ -35,14 +36,26 @@ public class OtcCollectionsAndOtherCollectionsServiceImpl implements
 		File file = new File("temp", "files");
 		file.mkdirs();
 		try {
+			OtcCollectionValidator validator = new OtcCollectionValidator(request);
+			validator.validate();
 			String fileName = "";
-			String branchCode = "";
 			File file2 = File.createTempFile("temp",
 					"." + request.getSourceSysId(), file);
 			FileWriter writer = new FileWriter(file2);
-
+			String branchCode = request.getBranchCode();
 			List<IntegOtcPostCollectionsAndOtherCollectionsList> list = request
 					.getIntegOtcPostCollectionsAndOtherCollectionsList();
+			Date date = new Date();
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(date);
+			String year = new SimpleDateFormat("yy").format(date);
+			String month = new SimpleDateFormat("MM").format(date);
+			String day = new SimpleDateFormat("dd").format(date);
+			String hour = new SimpleDateFormat("HH").format(date);
+			String minutes = new SimpleDateFormat("mm").format(date);
+			String seconds = new SimpleDateFormat("ss").format(date);
+			fileName = branchCode + year + month + day + hour + minutes
+					+ seconds + "." + request.getSourceSysId();
 			for (IntegOtcPostCollectionsAndOtherCollectionsList collection : list) {
 				writer.append(collection.getHdrReceiptNo() + "|");
 				writer.append(collection.getHdrReceiptDate() + "|");
@@ -58,21 +71,8 @@ public class OtcCollectionsAndOtherCollectionsServiceImpl implements
 				writer.append(collection.getDtlReceivableActivity() + "|");
 				writer.append(collection.getDtlBankName() + "|");
 				writer.append(collection.getDtlCheckNumber() + "|");
-				writer.append(collection.getBranchCode() + "|");
-				writer.append(collection.getTransactionId() + "\n");
-				branchCode = collection.getBranchCode(); 
+				writer.append(fileName + "\n");
 			}
-			Date date = new Date();
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(date);
-			String year = new SimpleDateFormat("yy").format(date);
-			String month = new SimpleDateFormat("MM").format(date);
-			String day = new SimpleDateFormat("dd").format(date);
-			String hour = new SimpleDateFormat("HH").format(date);
-			String minutes = new SimpleDateFormat("mm").format(date);
-			String seconds = new SimpleDateFormat("ss").format(date);
-			fileName = branchCode + year + month + day + hour + minutes
-					+ seconds + "." + request.getSourceSysId();
 			// close writer
 			writer.close();
 			File finalFile  = new File("../temp/otc/" + fileName);
@@ -104,6 +104,4 @@ public class OtcCollectionsAndOtherCollectionsServiceImpl implements
 		input.close();
 		output.close();
 	}
-
-
 }
