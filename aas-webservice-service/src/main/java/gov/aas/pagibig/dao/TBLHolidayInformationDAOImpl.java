@@ -26,7 +26,7 @@ public class TBLHolidayInformationDAOImpl implements TBLHolidayInformationDAO {
 		if(from == null || to == null){
 			throw new IntegServiceException("Invalid date format! format must be yyyy-mm-dd", IntegErrorCode.REQUEST_FORMAT_INVALID);
 		}
-		List<TBLHolidayInformation> returnList = em
+		List<TBLHolidayInformation> returnList = em	
 				.createNamedQuery("TBLHolidayInformation.getHolidayInformation")
 				.setParameter("from", from.toGregorianCalendar().getTime()).setParameter("to", to.toGregorianCalendar().getTime())
 				.getResultList();

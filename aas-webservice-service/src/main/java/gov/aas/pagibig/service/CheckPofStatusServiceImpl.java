@@ -57,6 +57,9 @@ public class CheckPofStatusServiceImpl
              response.setTotalAmt(String.valueOf(pofForm.getTotalAmt()));    
              response.setReceivingUnit(String.valueOf(pofForm.getReceivingUnit()));
              response.setOfcNo(String.valueOf(pofForm.getOfcNo()));
+             response.setPofDate(String.valueOf(pofForm.getPofDate()));
+             response.setPayMode(String.valueOf(pofForm.getPayMode()));
+             response.setCurrencyCode(String.valueOf(pofForm.getCurrencyCode()));
          }
          catch ( IntegServiceException aase )
          {

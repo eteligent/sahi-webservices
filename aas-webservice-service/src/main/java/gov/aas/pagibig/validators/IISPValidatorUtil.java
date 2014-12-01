@@ -1,6 +1,8 @@
 package gov.aas.pagibig.validators;
 
 
+import java.math.BigDecimal;
+
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import gov.aas.pagibig.exception.IntegErrorCode;
@@ -20,8 +22,8 @@ public final class IISPValidatorUtil {
 			throw new IntegServiceException("Invalid date format! format must be yyyy-mm-dd. field name: "  + fieldName ,IntegErrorCode.REQUEST_FORMAT_INVALID);
 	}
 	
-	public static void validateAmount(double input, String fieldName) throws IntegServiceException{
-		if(input == 0.0)
+	public static void validateAmount(BigDecimal input, String fieldName) throws IntegServiceException{
+		if(input == null)
 			throw new IntegServiceException("Invalid Amount! field name : " + fieldName,IntegErrorCode.REQUEST_FORMAT_INVALID);
 	}
 }

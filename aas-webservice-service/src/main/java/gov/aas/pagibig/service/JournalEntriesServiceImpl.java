@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import gov.aas.pagibig.common.exception.IISPException;
 import gov.aas.pagibig.common.utils.FTPUploaderUtil;
 import gov.aas.pagibig.exception.IntegErrorCode;
+import gov.aas.pagibig.validators.IISPFormatterUtil;
 import gov.aas.pagibig.validators.JournalEntryValidator;
 import gov.aas.pagibig.webservice.IntegGlPostJournalEntriesToGlRequest;
 import gov.aas.pagibig.webservice.IntegGlPostJournalEntriesToGlRequestList;
@@ -56,29 +57,48 @@ public class JournalEntriesServiceImpl implements JournalEntriesService {
 			List<IntegGlPostJournalEntriesToGlRequestList> list = request
 					.getIntegGlPostJournalEntriesToGlRequestList();
 			for (IntegGlPostJournalEntriesToGlRequestList entry : list) {
-				writer.append(entry.getAcctgDate() + "|");
-				writer.append(entry.getAccountType() + "|");
-				writer.append(entry.getSegment1() + "|");
-				writer.append(entry.getSegment2() + "|");
-				writer.append(entry.getSegment3() + "|");
-				writer.append(entry.getSegment4() + "|");
-				writer.append(entry.getSegment5() + "|");
-				writer.append(entry.getSegment6() + "|");
-				writer.append(entry.getSegment7() + "|");
-				writer.append(entry.getSegment8() + "|");
-				writer.append(entry.getSegment9() + "|");
-				writer.append(entry.getSegment10() + "|");
-				writer.append(entry.getJournalName());
-				writer.append(entry.getCategoryName() + "|");
-				writer.append(entry.getCurrencyCode() + "|");
-				writer.append(entry.getAmount() + "|");
-				writer.append(entry.getReferencesOrDescription() + "|");
-				writer.append(fileName + "\n");
+				writer.append(IISPFormatterUtil.toGLDate(entry.getAcctgDate()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getAccountType()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getSegment1()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getSegment2()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getSegment3()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getSegment4()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getSegment5()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getSegment6()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getSegment7()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getSegment8()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getSegment9()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getSegment10()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getJournalName()) + "");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getCategoryName()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getCurrencyCode()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullBigDecimalWithBlank(entry.getAmount()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getReferencesOrDescription()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getPfrNo())+ "|");
+				writer.append(IISPFormatterUtil.replaceNullBigDecimalWithBlank(entry.getCurrencyAmount()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getPayorName())+ "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getTransactionNumber())+ "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getAccountTypeNumber())+ "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getPaymentTrackingNumber())+ "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getCreditMemoNumber())+ "|");
+				writer.append(IISPFormatterUtil.toGLDate(entry.getClearDate())+ "|");
+				writer.append(IISPFormatterUtil.toGLDate(entry.getTicketDate())+ "|");
+				writer.append(IISPFormatterUtil.toGLDate(entry.getValueDate())+ "|");
+				writer.append(IISPFormatterUtil.toGLDate(entry.getPercovFrm())+ "|");
+				writer.append(IISPFormatterUtil.toGLDate(entry.getPercovTo())+ "|");
+				writer.append(IISPFormatterUtil.replaceNullBigDecimalWithBlank(entry.getPesoAmt())+ "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getPaySource())+ "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getPostedBy())+ "|");
+				writer.append(entry.getPfrNo() == null ? "" : IISPFormatterUtil.getGLDateToday() + "|"); /*TO BE EDITED*/
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getBankName())+ "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getCheckNumber())+ "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getHdrCheckType())+ "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(fileName) + "\n");
 			}
 			// close writer
 			writer.close();
 			copyFileUsingFileStreams(file2, new File("../temp/gl/" + fileName));
-			 FTPUploaderUtil.uploadGL(file2, fileName);
+			FTPUploaderUtil.uploadGL(file2, fileName);
 			response.setResponseCode("1");
 			response.setResponseMessage("Successfuly Sent");
 		} catch (IOException e) {

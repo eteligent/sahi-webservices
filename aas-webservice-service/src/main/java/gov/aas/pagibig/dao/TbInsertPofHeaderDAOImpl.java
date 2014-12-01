@@ -44,7 +44,6 @@ public class TbInsertPofHeaderDAOImpl
             insertPofHeader.setPayMode( payMode );
             insertPofHeader.setCurrencyCode(currencyCode);
             insertPofHeader.setUserId( userId );
-        	
         	em.persist( insertPofHeader );
     	}
     	else

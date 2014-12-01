@@ -24,19 +24,18 @@ public class TBLInsertPofDetailsDAOImpl
     public void insertPOFDetail( String pofNo,String accountTypeCode,String accountType, BigDecimal amount)
     		   throws IntegServiceException
     {
-    	if(pofNo == null || pofNo == " " || pofNo == "?" || accountTypeCode == null || accountTypeCode == " "  
-    			|| accountTypeCode == "?" || accountType == null || accountType == "?" || accountType == "?" || amount == null || amount == BigDecimal.ZERO)
+    	if(pofNo == null || pofNo == " " || pofNo == "?" || accountTypeCode == null || accountTypeCode == " " || accountTypeCode == "?" || accountType == null || accountType == "" || accountType == "?" || amount == null || amount == BigDecimal.ZERO)
     	{
     		throw new IntegServiceException(" 2 -FAILED TO SEND REQUEST:Request Parameter Incomplete", IntegErrorCode.REQUEST_PARAMETER_INCOMPLETE);
 		}
-   
+    	
+
     		TBLInsertPofDetails insertPofDet = new TBLInsertPofDetails();
     		insertPofDet.setPofNo( pofNo);
     		insertPofDet.setAccountTypeCode( accountTypeCode);
     		insertPofDet.setAccountType( accountType);
     		insertPofDet.setAmount( amount);
-           
-        	
+           	
         	em.persist( insertPofDet );
     	
     }

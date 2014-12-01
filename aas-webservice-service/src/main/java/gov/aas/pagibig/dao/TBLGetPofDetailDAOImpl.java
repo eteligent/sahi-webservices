@@ -24,7 +24,7 @@ public class TBLGetPofDetailDAOImpl
     
     @SuppressWarnings( "unchecked" )
     @Override
-    public TBLInsertPofDetails getPOFDetail(String pofNo)
+    public List<TBLInsertPofDetails> getPOFDetail(String pofNo)
     		   throws IntegServiceException
     {
     	if(pofNo == null)
@@ -44,8 +44,7 @@ public class TBLGetPofDetailDAOImpl
     	}
     	else
     	{	
-    		TBLInsertPofDetails getDetailDet = results.get(0);
-    		return getDetailDet;
+    		return results;
     	}
     }
 }

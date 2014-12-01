@@ -6,6 +6,7 @@ import gov.aas.pagibig.exception.IntegErrorCode;
 import gov.aas.pagibig.exception.IntegServiceException;
 import gov.aas.pagibig.webservice.IntegOtcGetPofDetailRequest;
 import gov.aas.pagibig.webservice.IntegOtcGetPofDetailResponse;
+import gov.aas.pagibig.webservice.IntegOtcGetPofDetailResponseList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,15 +45,26 @@ public class GetPofDetailServiceImpl
     	IntegOtcGetPofDetailResponse response = new IntegOtcGetPofDetailResponse();   
         // create record for update/insert
     
-    	TBLInsertPofDetails pofForm = new TBLInsertPofDetails(); 
+    	List<TBLInsertPofDetails> getPofDetailsResultSet ; 
          try
          {
-        	 pofForm = getPofDAOImpl.getPOFDetail(request.getPofNo());
+        	 
+        	 getPofDetailsResultSet = getPofDAOImpl.getPOFDetail(request.getPofNo());
+        			 
+        	 List<IntegOtcGetPofDetailResponseList> returnList = response.getIntegOtcGetPofDetailResponseList(); 
+        	 for(TBLInsertPofDetails result : getPofDetailsResultSet){
+        		 
+        		 IntegOtcGetPofDetailResponseList responseList = new IntegOtcGetPofDetailResponseList();
+        		 
+        		 responseList.setPofNo(result.getPofNo());
+        		 responseList.setAccountTypeCode(result.getAccountTypeCode());
+        		 responseList.setAccountType(result.getAccountType());
+        		 responseList.setAmount(result.getAmount());
+        		 
+        		 returnList.add(responseList);
+        		 
+        	 }
      			
-             response.setPofNo(String.valueOf(pofForm.getPofNo()));
-             response.setAccountTypeCode(String.valueOf(pofForm.getAccountTypeCode()));
-             response.setAccountType(String.valueOf(pofForm.getAccountType()));
-             response.setAmount(String.valueOf(pofForm.getAmount())); 
          }
          catch ( IntegServiceException aase )
          {

@@ -96,7 +96,7 @@ public class RequestForPaymentServiceImpl implements RequestForPaymentService {
 			writer.close();
 			File finalFile = new File("../temp/rfp/" + fileName);
 			copyFileUsingFileStreams(file2, finalFile);
-			FTPUploaderUtil.uploadRfp(finalFile, fileName);
+			FTPUploaderUtil.uploadRfp(finalFile, fileName, request.getBranchCode());
 			response.setResponseCode("1");
 			response.setResponseMessage("Success");
 		} catch (IOException e) {

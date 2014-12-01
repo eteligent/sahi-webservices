@@ -26,12 +26,13 @@ public class TBLUpdatePofStatusDAOImpl
     public void updatePOFStatus( 
   		  String pofNo, String payorName, String pfrNo, 
   		  String src, float totalAmt, String generatedBy, XMLGregorianCalendar dateGenerated, 
-  		  String status, XMLGregorianCalendar datePaym, String receivingUnit, int ofcNo)
+  		  String status, XMLGregorianCalendar datePaym, String receivingUnit, int ofcNo, 
+  		  XMLGregorianCalendar pofDate, int payMode, int currencyCode)
     		   throws IntegServiceException
     {
     	if(pofNo == null || payorName == null || pfrNo == null|| 
     			src == null || totalAmt <= -1 || status == null || 
-    			datePaym == null || receivingUnit == null || ofcNo <= 0)
+    			datePaym == null || receivingUnit == null || ofcNo <= 0 || pofDate == null || payMode <=0 || currencyCode <=0 )
     	{
     		throw new IntegServiceException("FAILED TO SEND REQUEST:Request Parameter Incomplete", IntegErrorCode.REQUEST_PARAMETER_INCOMPLETE);
 		}
@@ -55,6 +56,9 @@ public class TBLUpdatePofStatusDAOImpl
 	    		updPofStat.setDatePaym( datePaym.toGregorianCalendar().getTime() );
 	            updPofStat.setReceivingUnit(receivingUnit);
 	            updPofStat.setOfcNo(ofcNo);
+	            updPofStat.setPofDate(pofDate.toGregorianCalendar().getTime() );
+	            updPofStat.setPayMode(payMode);
+	            updPofStat.setCurrencyCode(currencyCode);
 	        	em.persist(updPofStat);
 	    	}
 	    	else

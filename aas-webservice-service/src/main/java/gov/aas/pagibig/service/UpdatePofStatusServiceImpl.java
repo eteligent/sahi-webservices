@@ -42,7 +42,10 @@ public class UpdatePofStatusServiceImpl
         											 request.getStatus(),
         											 request.getDatePaym(),
         											 request.getReceivingUnit(),
-        											 request.getOfcNo());
+        											 request.getOfcNo(),
+        											 request.getPofDate(),
+        											 request.getPayMode(),
+        											 request.getCurrencyCode());
         	
         	response.setResponseCode( AASServiceUtil.STATUS_SUCCESS );
         	response.setResponseMessage("Successful");

@@ -11,7 +11,8 @@ public interface TBLUpdatePofStatusDAO
   public void updatePOFStatus( 
 		  String pofNo, String payorName, String pfrNo, 
 		  String src, float totalAmt, String generatedBy, XMLGregorianCalendar dateGenerated, 
-		  String status, XMLGregorianCalendar datePaym, String receivingUnit, int ofcNo)
+		  String status, XMLGregorianCalendar datePaym, String receivingUnit, int ofcNo, 
+		  XMLGregorianCalendar pofDate, int payMode, int currencyCode)
    throws IntegServiceException;
 
 }

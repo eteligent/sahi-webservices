@@ -566,9 +566,29 @@
 				<xsd:element name="journal_name" type="xsd:string" />
 				<xsd:element name="category_name" type="xsd:string" />
 				<xsd:element name="currency_code" type="xsd:string" />
-				<xsd:element name="amount" type="xsd:double" />
+				<xsd:element name="amount" type="xsd:decimal" />
 				<xsd:element name="references_or_description" type="xsd:string" />
 				<xsd:element name="transaction_id" type="xsd:string" />
+				<xsd:element name="pfr_no" type="xsd:string" />
+				<xsd:element name="currency_amount" type="xsd:decimal" />
+				<xsd:element name="payor_name" type="xsd:string" />
+				<xsd:element name="transaction_number" type="xsd:string" />
+				<xsd:element name="account_type_number" type="xsd:string" />
+				<xsd:element name="payment_tracking_number" type="xsd:string" />
+				<xsd:element name="credit_memo_number" type ="xsd:string" />
+				<xsd:element name="clear_date" type = "xsd:date" />
+				<xsd:element name="ticket_date" type = "xsd:date" />
+				<xsd:element name="value_date" type="xsd:date" />
+				<xsd:element name="percov_frm" type="xsd:date" />
+				<xsd:element name="percov_to" type="xsd:date"/>
+				<xsd:element name="peso_amt" type="xsd:decimal" />
+				<xsd:element name="pay_source" type="xsd:string" />
+				<xsd:element name="posted_by" type="xsd:string"/>
+				<xsd:element name="date_posted" type="xsd:date" />
+				<xsd:element name="bank_name" type="xsd:string" />
+				<xsd:element name="check_number" type="xsd:string" />
+				<xsd:element name="hdr_check_type" type="xsd:string" />
+				<xsd:element name="filename" type="xsd:string" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -603,7 +623,7 @@
 			<xsd:sequence>
 				<xsd:element name="hdr_receipt_no" type="xsd:string" />
 				<xsd:element name="hdr_receipt_date" type="xsd:date" />
-				<xsd:element name="hdr_amount" type="xsd:double" />
+				<xsd:element name="hdr_amount" type="xsd:decimal" />
 				<xsd:element name="hdr_gl_date" type="xsd:date" />
 				<xsd:element name="hdr_receipt_method_name" type="xsd:string" />
 				<xsd:element name="hdr_customer_number" type="xsd:string" />
@@ -641,7 +661,8 @@
 				<xsd:element name="user_name" type="xsd:string" />
 				<xsd:element name="Password" type="xsd:string" />
 				<xsd:element name="branch_code" type="xsd:string" />
-				<xsd:element maxOccurs="unbounded" ref="integ_ap_request_for_payment_list" />
+				<xsd:element maxOccurs="unbounded"
+					ref="integ_ap_request_for_payment_list" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -650,103 +671,101 @@
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="hdr_invoice_num" type="xsd:string" />
-				<xsd:element name="hdr_invoice_type_lookup_code" type="xsd:string"/>
-				<xsd:element name = "hdr_invoice_date" type = "xsd:date"/>
-				<xsd:element name = "hdr_vendor_num" type = "xsd:string"/>
-				<xsd:element name = "hdr_vendor_site_code" type = "xsd:string"/>
-				<xsd:element name = "hdr_invoice_amount" type = "xsd:double"/>
-				<xsd:element name = "hdr_description" type = "xsd:string"/>
-				<xsd:element name = "hdr_goods_received_date" type = "xsd:date"/>
-				<xsd:element name = "hdr_invoice_received_date" type = "xsd:date" />
-				<xsd:element name = "hdr_gl_date" type = "xsd:date"/>
-				<xsd:element name = "hdr_source" type = "xsd:string"/>
-				<xsd:element name = "dtl_line_number" type = "xsd:string"/>
-				<xsd:element name = "dtl_amount" type = "xsd:double"/>
-				<xsd:element name = "dtl_line_type_lookup_code" type = "xsd:string"/>
-				<xsd:element name = "dtl_dr_company" type = "xsd:string"/>
-				<xsd:element name = "dtl_dr_branch_or_office" type = "xsd:string"/>
-				<xsd:element name = "dtl_dr_activity_code" type = "xsd:string"/>
-				<xsd:element name = "dtl_dr_cost_classification" type = "xsd:string"/>
-				<xsd:element name = "dtl_dr_gl_account" type = "xsd:string"/>			
-				<xsd:element name = "dtl_dr_future_account" type = "xsd:string"/>
-				<xsd:element name = "dtl_dr_future_account2" type = "xsd:string"/>
-				<xsd:element name = "dtl_dr_amount" type = "xsd:double"/>
-				<xsd:element name = "dtl_reference_number" type = "xsd:string"/>
-				<xsd:element name = "dtl_cr_company" type = "xsd:string"/>
-				<xsd:element name = "dtl_cr_branch_or_office" type = "xsd:string"/>
-				<xsd:element name = "dtl_cr_activity_code" type = "xsd:string"/>
-				<xsd:element name = "dtl_cr_cost_classification" type = "xsd:string"/>
-				<xsd:element name = "dtl_cr_gl_account" type = "xsd:string"/>			
-				<xsd:element name = "dtl_cr_future_account" type = "xsd:string"/>
-				<xsd:element name = "dtl_cr_future_account2" type = "xsd:string"/>
-				<xsd:element name = "dtl_cr_amount" type = "xsd:decimal"/>
-				<xsd:element name = "dtl_white_code" type = "xsd:string" />
-				<xsd:element name = "hdr_curr_code" type = "xsd:string" />
-				<xsd:element name = "payment_terms_code" type = "xsd:string" />
-				<xsd:element name = "filename" type = "xsd:string"/>
-				<xsd:element name = "transaction_id" type = "xsd:string" />
+				<xsd:element name="hdr_invoice_type_lookup_code" type="xsd:string" />
+				<xsd:element name="hdr_invoice_date" type="xsd:date" />
+				<xsd:element name="hdr_vendor_num" type="xsd:string" />
+				<xsd:element name="hdr_vendor_site_code" type="xsd:string" />
+				<xsd:element name="hdr_invoice_amount" type="xsd:decimal" />
+				<xsd:element name="hdr_description" type="xsd:string" />
+				<xsd:element name="hdr_goods_received_date" type="xsd:date" />
+				<xsd:element name="hdr_invoice_received_date" type="xsd:date" />
+				<xsd:element name="hdr_gl_date" type="xsd:date" />
+				<xsd:element name="hdr_source" type="xsd:string" />
+				<xsd:element name="dtl_line_number" type="xsd:string" />
+				<xsd:element name="dtl_amount" type="xsd:decimal" />
+				<xsd:element name="dtl_line_type_lookup_code" type="xsd:string" />
+				<xsd:element name="dtl_dr_company" type="xsd:string" />
+				<xsd:element name="dtl_dr_branch_or_office" type="xsd:string" />
+				<xsd:element name="dtl_dr_activity_code" type="xsd:string" />
+				<xsd:element name="dtl_dr_cost_classification" type="xsd:string" />
+				<xsd:element name="dtl_dr_gl_account" type="xsd:string" />
+				<xsd:element name="dtl_dr_future_account" type="xsd:string" />
+				<xsd:element name="dtl_dr_future_account2" type="xsd:string" />
+				<xsd:element name="dtl_dr_amount" type="xsd:decimal" />
+				<xsd:element name="dtl_reference_number" type="xsd:string" />
+				<xsd:element name="dtl_cr_company" type="xsd:string" />
+				<xsd:element name="dtl_cr_branch_or_office" type="xsd:string" />
+				<xsd:element name="dtl_cr_activity_code" type="xsd:string" />
+				<xsd:element name="dtl_cr_cost_classification" type="xsd:string" />
+				<xsd:element name="dtl_cr_gl_account" type="xsd:string" />
+				<xsd:element name="dtl_cr_future_account" type="xsd:string" />
+				<xsd:element name="dtl_cr_future_account2" type="xsd:string" />
+				<xsd:element name="dtl_cr_amount" type="xsd:decimal" />
+				<xsd:element name="dtl_white_code" type="xsd:string" />
+				<xsd:element name="hdr_curr_code" type="xsd:string" />
+				<xsd:element name="payment_terms_code" type="xsd:string" />
+				<xsd:element name="filename" type="xsd:string" />
+				<xsd:element name="transaction_id" type="xsd:string" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	<xsd:element name = "integ_ap_request_for_paymentResponse">
+	<!-- Start Get POF Header -->
+	<xsd:element name="integ_otc_get_pof_headerRequest">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="response_code" type="xsd:string" />
-				<xsd:element name="response_message" type="xsd:string" />
+				<xsd:element name="username" type="xsd:string" />
+				<xsd:element name="password" type="xsd:string" />
+				<xsd:element name="pof_no" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="integ_otc_get_pof_headerResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="pof_date" type="xsd:string" />
+				<xsd:element name="payor_name" type="xsd:string" />
+				<xsd:element name="pay_mode" type="xsd:string" />
+				<xsd:element name="currency_code" type="xsd:string" />
+				<xsd:element name="user_id" type="xsd:string" />
 				<xsd:element name="error" type="aas:errorType" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	<!-- End RFP -->
-	
-	<!-- Start Get POF Header -->
-	<xsd:element name = "integ_otc_get_pof_headerRequest">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element name="username" type="xsd:string"/>
-				<xsd:element name="password" type="xsd:string"/>
-				<xsd:element name="pof_no" type="xsd:string" />
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-	<xsd:element name ="integ_otc_get_pof_headerResponse">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element name="pof_date" type="xsd:string"/>
-				<xsd:element name="payor_name" type="xsd:string"/>
-				<xsd:element name="pay_mode" type="xsd:string"/>
-				<xsd:element name="currency_code" type="xsd:string"/>
-				<xsd:element name="user_id" type="xsd:string"/>
-				<xsd:element name="error" type="aas:errorType"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
 	<!-- End Get POF Header -->
-	
+
 	<!-- Start Get POF Detail -->
-	<xsd:element name = "integ_otc_get_pof_detailRequest">
+	<xsd:element name="integ_otc_get_pof_detailRequest">
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="pof_no" type="xsd:string" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	<xsd:element name = "integ_otc_get_pof_detailResponse">
+	<xsd:element name="integ_otc_get_pof_detailResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded"
+					ref="integ_otc_get_pof_detail_response_list" />
+				<xsd:element name="error" type="aas:errorType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="integ_otc_get_pof_detail_response_list">
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="pof_no" type="xsd:string" />
 				<xsd:element name="account_type_code" type="xsd:string" />
 				<xsd:element name="account_type" type="xsd:string" />
-				<xsd:element name="amount" type="xsd:string" />
-				<xsd:element name="error" type="aas:errorType"/>
+				<xsd:element name="amount" type="xsd:decimal" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	
-	<!-- End Get POF Detail -->	
-	
+
+	<!-- End Get POF Detail -->
+
 	<!-- Start Update Pof Status -->
-		<xsd:element name = "integ_otc_update_pof_statusRequest">
+	<xsd:element name="integ_otc_update_pof_statusRequest">
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="pof_no" type="xsd:string" />
@@ -760,45 +779,97 @@
 				<xsd:element name="date_paym" type="xsd:date" />
 				<xsd:element name="receiving_unit" type="xsd:string" />
 				<xsd:element name="ofc_no" type="xsd:int" />
+				<xsd:element name="pof_date" type="xsd:date" />
+				<xsd:element name="pay_mode" type="xsd:int" />
+				<xsd:element name="currency_code" type="xsd:int" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	<xsd:element name ="integ_otc_update_pof_statusResponse">
+	<xsd:element name="integ_otc_update_pof_statusResponse">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="response_code" type="xsd:string"/>
-				<xsd:element name="response_message" type="xsd:string"/>
-				<xsd:element name="error" type="aas:errorType"/>
+				<xsd:element name="response_code" type="xsd:string" />
+				<xsd:element name="response_message" type="xsd:string" />
+				<xsd:element name="error" type="aas:errorType" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
 	<!-- End Update Pof Status -->
-	
-	
-	
+
+
+
 	<!-- Start Check Pof Status -->
-	<xsd:element name ="integ_otc_check_pof_statusRequest">
+	<xsd:element name="integ_otc_check_pof_statusRequest">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="source_sys_id" type="xsd:string"/>
-				<xsd:element name="user_name" type="xsd:string"/>
-				<xsd:element name="password" type="xsd:string"/>
-				<xsd:element name="pof_no" type="xsd:string"/>
-				<xsd:element name="payor_name" type="xsd:string"/>
-				<xsd:element name="src" type="xsd:string"/>
+				<xsd:element name="source_sys_id" type="xsd:string" />
+				<xsd:element name="user_name" type="xsd:string" />
+				<xsd:element name="password" type="xsd:string" />
+				<xsd:element name="pof_no" type="xsd:string" />
+				<xsd:element name="payor_name" type="xsd:string" />
+				<xsd:element name="src" type="xsd:string" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	<xsd:element name ="integ_otc_check_pof_statusResponse">
+	<xsd:element name="integ_otc_check_pof_statusResponse">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="pof_no" type="xsd:string"/>
-				<xsd:element name="pfr_no" type="xsd:string"/>
-				<xsd:element name="date_paym" type="xsd:string"/>
-				<xsd:element name="total_amt" type="xsd:string"/>
-				<xsd:element name="receiving_unit" type="xsd:string"/>
-				<xsd:element name="ofc_no" type="xsd:string"/>
-				<xsd:element name="error" type="aas:errorType"/>		
+				<xsd:element name="pof_no" type="xsd:string" />
+				<xsd:element name="pfr_no" type="xsd:string" />
+				<xsd:element name="date_paym" type="xsd:string" />
+				<xsd:element name="total_amt" type="xsd:string" />
+				<xsd:element name="receiving_unit" type="xsd:string" />
+				<xsd:element name="ofc_no" type="xsd:string" />
+				<xsd:element name="pof_date" type="xsd:string" />
+				<xsd:element name="pay_mode" type="xsd:string" />
+				<xsd:element name="currency_code" type="xsd:string" />
+				<xsd:element name="error" type="aas:errorType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- End Check Pof Status -->
+
+
+	<!-- Start Get Division Data -->
+	<xsd:element name="integ_hris_get_div_dataRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="source_sys_id" type="xsd:string" />
+				<xsd:element name="user_name" type="xsd:string" />
+				<xsd:element name="password" type="xsd:string" />
+				<xsd:element name="dept_code" type="xsd:string" />
+				<xsd:element name="last_updated_datetime" type="xsd:dateTime" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="integ_hris_get_div_dataResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="dept_code" type="xsd:string" />
+				<xsd:element name="div_code" type="xsd:string" />
+				<xsd:element name="div_name" type="xsd:string" />
+				<xsd:element name="error" type="aas:errorType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- End Get Division Data -->
+
+	<!-- Start Get Sample -->
+	<xsd:element name="get_sampleRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="codevalue" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="get_sampleResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="codename" type="xsd:string" />
+				<xsd:element name="desc1" type="xsd:string" />
+				<xsd:element name="desc2" type="xsd:string" />
+				<xsd:element name="error" type="aas:errorType" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>

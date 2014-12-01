@@ -77,7 +77,7 @@ public class OtcCollectionsAndOtherCollectionsServiceImpl implements
 			writer.close();
 			File finalFile  = new File("../temp/otc/" + fileName);
 			copyFileUsingFileStreams(file2, finalFile);
-			FTPUploaderUtil.uploadOtc(finalFile, fileName);
+			FTPUploaderUtil.uploadOtc(finalFile, fileName, request.getBranchCode());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
