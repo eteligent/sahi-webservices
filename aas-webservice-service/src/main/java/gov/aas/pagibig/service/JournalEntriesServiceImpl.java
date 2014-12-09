@@ -38,8 +38,7 @@ public class JournalEntriesServiceImpl implements JournalEntriesService {
 			JournalEntryValidator validator = new JournalEntryValidator(request);
 			validator.validate();
 			String fileName = "";
-			File file2 = File.createTempFile("temp",
-					"." + request.getSourceSysId(), file);
+			File file2 = File.createTempFile("temp","." + request.getSourceSysId(), file);
 			FileWriter writer = new FileWriter(file2);
 			String branchCode = request.getBranchCode();
 			//generate file name
@@ -74,25 +73,30 @@ public class JournalEntriesServiceImpl implements JournalEntriesService {
 				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getCurrencyCode()) + "|");
 				writer.append(IISPFormatterUtil.replaceNullBigDecimalWithBlank(entry.getAmount()) + "|");
 				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getReferencesOrDescription()) + "|");
-				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getPfrNo())+ "|");
-				writer.append(IISPFormatterUtil.replaceNullBigDecimalWithBlank(entry.getCurrencyAmount()) + "|");
-				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getPayorName())+ "|");
-				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getTransactionNumber())+ "|");
-				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getAccountTypeNumber())+ "|");
-				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getPaymentTrackingNumber())+ "|");
-				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getCreditMemoNumber())+ "|");
-				writer.append(IISPFormatterUtil.toGLDate(entry.getClearDate())+ "|");
-				writer.append(IISPFormatterUtil.toGLDate(entry.getTicketDate())+ "|");
-				writer.append(IISPFormatterUtil.toGLDate(entry.getValueDate())+ "|");
-				writer.append(IISPFormatterUtil.toGLDate(entry.getPercovFrm())+ "|");
-				writer.append(IISPFormatterUtil.toGLDate(entry.getPercovTo())+ "|");
-				writer.append(IISPFormatterUtil.replaceNullBigDecimalWithBlank(entry.getPesoAmt())+ "|");
-				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getPaySource())+ "|");
-				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getPostedBy())+ "|");
-				writer.append(entry.getPfrNo() == null ? "" : IISPFormatterUtil.getGLDateToday() + "|"); /*TO BE EDITED*/
-				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getBankName())+ "|");
-				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getCheckNumber())+ "|");
-				writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getHdrCheckType())+ "|");
+				if(entry.getPfrNo().trim().length() == 0){
+					writer.append("|||||||||||||||||||"); //can't think of anything right now
+				}else{
+					validator.validateAdditional();
+					writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getPfrNo())+ "|");
+					writer.append(IISPFormatterUtil.replaceNullBigDecimalWithBlank(entry.getCurrencyAmount()) + "|");
+					writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getPayorName())+ "|");
+					writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getTransactionNumber())+ "|");
+					writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getAccountTypeNumber())+ "|");
+					writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getPaymentTrackingNumber())+ "|");
+					writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getCreditMemoNumber())+ "|");
+					writer.append(IISPFormatterUtil.toGLDate(entry.getClearDate())+ "|");
+					writer.append(IISPFormatterUtil.toGLDate(entry.getTicketDate())+ "|");
+					writer.append(IISPFormatterUtil.toGLDate(entry.getValueDate())+ "|");
+					writer.append(IISPFormatterUtil.toGLDate(entry.getPercovFrm())+ "|");
+					writer.append(IISPFormatterUtil.toGLDate(entry.getPercovTo())+ "|");
+					writer.append(IISPFormatterUtil.replaceNullBigDecimalWithBlank(entry.getPesoAmt())+ "|");
+					writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getPaySource())+ "|");
+					writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getPostedBy())+ "|");
+					writer.append(entry.getPfrNo() != null ? "" : IISPFormatterUtil.getGLDateToday() + "|"); /*TO BE EDITED*/
+					writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getBankName())+ "|");
+					writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getCheckNumber())+ "|");
+					writer.append(IISPFormatterUtil.replaceNullWithBlank(entry.getHdrCheckType())+ "|");
+				}
 				writer.append(IISPFormatterUtil.replaceNullWithBlank(fileName) + "\n");
 			}
 			// close writer
@@ -103,7 +107,7 @@ public class JournalEntriesServiceImpl implements JournalEntriesService {
 			response.setResponseMessage("Successfuly Sent");
 		} catch (IOException e) {
 			response.setError(AASServiceUtil.createError(
-					IntegErrorCode.SERVER_EXCEPTION, "Branch Code is Invalid"));
+					IntegErrorCode.SERVER_EXCEPTION, e.getMessage()));
 		} catch (IISPException e) {
 			response.setError(AASServiceUtil.createError(
 					IntegErrorCode.GL_POSTING_ERROR, e.getMessage()));
