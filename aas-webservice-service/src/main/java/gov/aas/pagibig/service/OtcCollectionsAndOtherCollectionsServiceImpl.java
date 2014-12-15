@@ -19,6 +19,7 @@ import gov.aas.pagibig.common.exception.ErrorCode;
 import gov.aas.pagibig.common.exception.IISPException;
 import gov.aas.pagibig.common.utils.FTPUploaderUtil;
 import gov.aas.pagibig.exception.IntegErrorCode;
+import gov.aas.pagibig.validators.IISPFormatterUtil;
 import gov.aas.pagibig.validators.OtcCollectionValidator;
 import gov.aas.pagibig.webservice.IntegOtcPostCollectionsAndOtherCollectionsList;
 import gov.aas.pagibig.webservice.IntegOtcPostCollectionsAndOtherCollectionsRequest;
@@ -57,27 +58,27 @@ public class OtcCollectionsAndOtherCollectionsServiceImpl implements
 			fileName = branchCode + year + month + day + hour + minutes
 					+ seconds + "." + request.getSourceSysId();
 			for (IntegOtcPostCollectionsAndOtherCollectionsList collection : list) {
-				writer.append(collection.getHdrReceiptNo() + "|");
-				writer.append(collection.getHdrReceiptDate() + "|");
-				writer.append(collection.getHdrAmount() + "|");
-				writer.append(collection.getHdrGlDate() + "|");
-				writer.append(collection.getHdrReceiptMethodName() + "|");
-				writer.append(collection.getHdrCustomerNumber() + "|");
-				writer.append(collection.getHdrLocationCode() + "|");
-				writer.append(collection.getHdrCustomerName() + "|");
-				writer.append(collection.getHdrLocationName() + "|");
-				writer.append(collection.getHdrCurrencyCode() + "|");
-				writer.append(collection.getDtlInvoiceNumber() + "|");
-				writer.append(collection.getDtlReceivableActivity() + "|");
-				writer.append(collection.getDtlBankName() + "|");
-				writer.append(collection.getDtlCheckNumber() + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(collection.getHdrReceiptNo()) + "|");
+				writer.append(IISPFormatterUtil.toGLDate(collection.getHdrReceiptDate()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullBigDecimalWithBlank(collection.getHdrAmount()) + "|");
+				writer.append(IISPFormatterUtil.toGLDate(collection.getHdrGlDate()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(collection.getHdrReceiptMethodName()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(collection.getHdrCustomerNumber()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(collection.getHdrLocationCode()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(collection.getHdrCustomerName()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(collection.getHdrLocationName()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(collection.getHdrCurrencyCode()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(collection.getDtlInvoiceNumber()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(collection.getDtlReceivableActivity()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(collection.getDtlBankName()) + "|");
+				writer.append(IISPFormatterUtil.replaceNullWithBlank(collection.getDtlCheckNumber()) + "|");
 				writer.append(fileName + "\n");
 			}
 			// close writer
 			writer.close();
 			File finalFile  = new File("../temp/otc/" + fileName);
 			copyFileUsingFileStreams(file2, finalFile);
-			FTPUploaderUtil.uploadOtc(finalFile, fileName, request.getBranchCode());
+			FTPUploaderUtil.uploadOtc(finalFile, fileName, request.	getBranchCode());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

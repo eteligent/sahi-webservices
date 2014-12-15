@@ -33,6 +33,18 @@ public final class JournalEntryValidator {
 			IISPValidatorUtil.validateAmount(glList.getAmount(), "AMOUNT");
 			IISPValidatorUtil.isEmpty(glList.getReferencesOrDescription(), "REFERENCES/DESCRIPTION");
 			IISPValidatorUtil.isEmpty(glList.getTransactionId(),"TRANSACTION ID");
+			
+		}
+	}
+	
+	public void validateAdditional() throws IntegServiceException{
+		List <IntegGlPostJournalEntriesToGlRequestList> list = request.getIntegGlPostJournalEntriesToGlRequestList();
+		for(IntegGlPostJournalEntriesToGlRequestList glList : list){
+			IISPValidatorUtil.validateDate(glList.getClearDate(), "CLEAR DATE");
+			IISPValidatorUtil.validateDate(glList.getTicketDate(), "TICKET DATE");
+			IISPValidatorUtil.validateDate(glList.getValueDate(), "VALUE DATE");
+			IISPValidatorUtil.validateDate(glList.getPercovTo(), "PERCOVTO");
+			IISPValidatorUtil.validateDate(glList.getPercovFrm(), "PERCOVFRM");
 		}
 	}
 }

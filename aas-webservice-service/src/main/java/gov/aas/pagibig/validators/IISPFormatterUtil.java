@@ -15,8 +15,12 @@ public final class IISPFormatterUtil {
 	}
 	
 	public static String toGLDate(XMLGregorianCalendar xmlGregorianCalendar){
-		Date date = xmlGregorianCalendar.toGregorianCalendar().getTime();
-		return new SimpleDateFormat(GL_FORMAT).format(date);
+		if(xmlGregorianCalendar == null){
+			return "";
+		}else{
+			Date date = xmlGregorianCalendar.toGregorianCalendar().getTime();
+			return new SimpleDateFormat(GL_FORMAT).format(date);
+		}
 	}
 	
 	public static String replaceNullWithBlank(String input){
