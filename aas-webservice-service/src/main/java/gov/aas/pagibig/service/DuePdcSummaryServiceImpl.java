@@ -49,9 +49,9 @@ public class DuePdcSummaryServiceImpl implements DuePdcSummaryService{
 				resultList.setPdcRefNo(result.getPdcRefNo());
 			}
 		} catch (IntegServiceException aase1) {
-			response.setError(AASServiceUtil.createError(aase1.getErrorCode(), aase1.getMessage()));
+			response.setError(IISPServiceUtil.createError(aase1.getErrorCode(), aase1.getMessage()));
 		} catch (DatatypeConfigurationException aase2) {
-			response.setError(AASServiceUtil.createError(IntegErrorCode.SERVER_EXCEPTION, aase2.getMessage()));
+			response.setError(IISPServiceUtil.createError(IntegErrorCode.SERVER_EXCEPTION, aase2.getMessage()));
 		}
 		return response;
 	}

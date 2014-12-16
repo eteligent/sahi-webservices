@@ -82,17 +82,17 @@ public class GetPtnShortpaymInfoServiceImpl
     catch (IntegServiceException aase1)
     {
     	logger.error( "Failed to get PtnShortpaymInfo", aase1 );
-		response.setError(AASServiceUtil.createError(aase1.getErrorCode(), aase1.getMessage()));
+		response.setError(IISPServiceUtil.createError(aase1.getErrorCode(), aase1.getMessage()));
 	} 
     catch (DatatypeConfigurationException aase2)
     {
 		logger.error( "Failed to get PtnShortpaymInfo ", aase2 );
-		response.setError(AASServiceUtil.createError(IntegErrorCode.SERVER_EXCEPTION, aase2.getMessage()));
+		response.setError(IISPServiceUtil.createError(IntegErrorCode.SERVER_EXCEPTION, aase2.getMessage()));
 	}
     catch ( Exception e )
     {
         logger.error( "Failed to get PtnShortpaymInfo ", e );
-        response.setError( AASServiceUtil.createError( IntegErrorCode.SERVER_EXCEPTION, "SYSTEM FAILURE" ) );
+        response.setError( IISPServiceUtil.createError( IntegErrorCode.SERVER_EXCEPTION, "SYSTEM FAILURE" ) );
     }
 
         return response;

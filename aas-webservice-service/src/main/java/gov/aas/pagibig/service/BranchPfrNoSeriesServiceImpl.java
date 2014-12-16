@@ -28,7 +28,7 @@ public class BranchPfrNoSeriesServiceImpl implements BranchPfrNoSeriesService{
 			response.setStartNo(Integer.parseInt(result.getStartNo()));
 			response.setPrefix(result.getPrefix());
 		}catch(IntegServiceException ex){
-			response.setError(AASServiceUtil.createError(ex.getErrorCode(), ex.getMessage()));
+			response.setError(IISPServiceUtil.createError(ex.getErrorCode(), ex.getMessage()));
 		}
 		return response;
 	}

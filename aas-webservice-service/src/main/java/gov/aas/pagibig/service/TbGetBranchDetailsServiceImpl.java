@@ -62,12 +62,12 @@ public class TbGetBranchDetailsServiceImpl
         catch (IntegServiceException aase) 
         {
         	logger.error( "Failed to get Branch Details! ", aase );
-        	response.setError(AASServiceUtil.createError(aase.getErrorCode(), aase.getMessage()));
+        	response.setError(IISPServiceUtil.createError(aase.getErrorCode(), aase.getMessage()));
 		}
         catch ( Exception e )
         {
             logger.error( "Failed to get Branch Details! ", e );
-            response.setError( AASServiceUtil.createError( IntegErrorCode.SERVER_EXCEPTION, "SYSTEM FAILURE" ) );
+            response.setError( IISPServiceUtil.createError( IntegErrorCode.SERVER_EXCEPTION, "SYSTEM FAILURE" ) );
         }
 	    
 	        return response;

@@ -44,7 +44,9 @@ public enum IntegErrorCode
     
     PDC_SUMMARY_EMPTY(Severity.WARNING, 00214),
     
-    GL_POSTING_ERROR(Severity.FATAL, 02152);
+    GL_POSTING_ERROR(Severity.FATAL, 02152),
+    
+    CREATE_OR_UPDATE_SUPPLIER_MASTER_FILE_ERROR(Severity.FATAL, 20524);
    
 
 

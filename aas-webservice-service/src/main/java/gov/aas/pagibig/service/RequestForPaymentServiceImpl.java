@@ -100,10 +100,10 @@ public class RequestForPaymentServiceImpl implements RequestForPaymentService {
 			response.setResponseCode("1");
 			response.setResponseMessage("Success");
 		} catch (IOException e) {
-			response.setError(AASServiceUtil.createError(
+			response.setError(IISPServiceUtil.createError(
 					IntegErrorCode.SERVER_EXCEPTION, "No Branch Code"));
 		} catch (IISPException e) {
-			response.setError(AASServiceUtil.createError(
+			response.setError(IISPServiceUtil.createError(
 					IntegErrorCode.GL_POSTING_ERROR, e.getMessage()));
 		}
 

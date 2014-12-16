@@ -26,7 +26,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 			response.setEmployeeName(details.getLname() + ", " + details.getFname() + " " + details.getMname());
 			response.setPosition(details.getPosition());
 		} catch (IntegServiceException e) {
-			response.setError(AASServiceUtil.createError(e.getErrorCode(), e.getMessage()));
+			response.setError(IISPServiceUtil.createError(e.getErrorCode(), e.getMessage()));
 		}
 		return response;
 	}

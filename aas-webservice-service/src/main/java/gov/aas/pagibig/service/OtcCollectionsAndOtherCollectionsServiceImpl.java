@@ -83,7 +83,7 @@ public class OtcCollectionsAndOtherCollectionsServiceImpl implements
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IISPException e) {
-			response.setError(AASServiceUtil.createError(IntegErrorCode.GL_POSTING_ERROR, e.getMessage()));
+			response.setError(IISPServiceUtil.createError(IntegErrorCode.GL_POSTING_ERROR, e.getMessage()));
 		}
 		response.setResponseCode("1");
 		response.setResponseMessage("Successfuly Sent");

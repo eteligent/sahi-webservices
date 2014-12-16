@@ -47,19 +47,19 @@ public class UpdatePofStatusServiceImpl
         											 request.getPayMode(),
         											 request.getCurrencyCode());
         	
-        	response.setResponseCode( AASServiceUtil.STATUS_SUCCESS );
+        	response.setResponseCode( IISPServiceUtil.STATUS_SUCCESS );
         	response.setResponseMessage("Successful");
         }
         catch ( IntegServiceException aase )
         {
             logger.error( "Failed to udpate POF Status ", aase );
-            response.setError( AASServiceUtil.createError( aase.getErrorCode(), aase.getMessage() ) );
+            response.setError( IISPServiceUtil.createError( aase.getErrorCode(), aase.getMessage() ) );
         }
         
         catch ( Exception e )
         {
             logger.error( "Failed to update POF Status ", e );
-            response.setError( AASServiceUtil.createError( IntegErrorCode.SERVER_EXCEPTION, "SYSTEM FAILURE" ) );
+            response.setError( IISPServiceUtil.createError( IntegErrorCode.SERVER_EXCEPTION, "SYSTEM FAILURE" ) );
         }
 
         return response;
