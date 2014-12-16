@@ -873,4 +873,98 @@
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
+	<xsd:element name="integ_ap_create_and_update_supplier_masterRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="source_sys_id" type="xsd:string" />
+				<xsd:element name="user_name" type="xsd:string" />
+				<xsd:element name="password" type="xsd:string" />
+				<xsd:element name="branch_code" type="xsd:string" />
+				<xsd:element maxOccurs = "unbounded" ref="integ_ap_create_and_update_supplier_master_list" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="integ_ap_create_and_update_supplier_master_list">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="hdr_supplier_name" type="xsd:string"/>
+				<xsd:element name="hdr_supplier_code" type="xsd:string" />
+				<xsd:element name="hdr_supplier_type" type="xsd:string" />
+				<xsd:element name="hdr_terms_name" type="xsd:string" />
+				<xsd:element name="hdr_pay_date_basis_lookup_code" type="xsd:string" />
+				<xsd:element name="hdr_invoice_curr_code" type="xsd:string" />
+				<xsd:element name="hdr_payment_curr_code" type="xsd:string" />
+				<xsd:element name="hdr_vat_code" type="xsd:string" />
+				<xsd:element name="hdr_terms_date_basis" type="xsd:string" />
+				<xsd:element name="hdr_auto_tax_calc_flag" type="xsd:boolean" />
+				<xsd:element name="hdr_amount_includes_tax_flag" type="xsd:string" />
+				<xsd:element name="hdr_allow_awt_flag" type="xsd:string" />
+				<xsd:element name="hdr_awt_group_name" type="xsd:string" />
+				<xsd:element name="hdr_payment_method_code" type="xsd:string" />
+				<xsd:element name="hdr_accts_pay_code_company" type="xsd:string" />
+				<xsd:element name="hdr_accts_pay_code_branch_or_office_code" type="xsd:string" />
+				<xsd:element name="hdr_accts_pay_code_activity_code" type="xsd:string" />
+				<xsd:element name="hdr_accts_pay_code_cost_classification" type="xsd:string" />
+				<xsd:element name="hdr_accts_pay_code_gl_account" type="xsd:string" />
+				<xsd:element name="hdr_accts_pay_code_future" type="xsd:string"/>
+				<xsd:element name="hdr_accts_pay_code_future2" type="xsd:string" />
+				<xsd:element name="dtl_site_code" type="xsd:string" />
+				<xsd:element name="dtl_pay_site_flag" type="xsd:string" />
+				<xsd:element name="dtl_address_line1" type="xsd:string" />
+				<xsd:element name="dtl_address_line2" type="xsd:string" />
+				<xsd:element name="dtl_address_line3" type="xsd:string" />
+				<xsd:element name="dtl_country" type="xsd:string" />
+				<xsd:element name="dtl_phone_area_code" type="xsd:string" />
+				<xsd:element name="dtl_phone_number" type="xsd:string" />
+				<xsd:element name="dtl_fax_area_code" type="xsd:string" />
+				<xsd:element name="dtl_fax_number" type="xsd:string" />
+				<xsd:element name="dtl_terms_date_basis" type="xsd:string" />
+				<xsd:element name="dtl_vat_code" type="xsd:string" />
+				<xsd:element name="dtl_terms_name" type="xsd:string" />
+				<xsd:element name="dtl_pay_date_basis_lookup_code" type="xsd:string" />
+				<xsd:element name="dtl_invoice_curr_code" type="xsd:string" />
+				<xsd:element name="dtl_payment_curr_code" type="xsd:string" />
+				<xsd:element name="dtl_auto_tax_calc_flag" type="xsd:string" />
+				<xsd:element name="dtl_amount_includes_tax_flag" type="xsd:string" />
+				<xsd:element name="dtl_primary_pay_site_flag" type="xsd:string" />
+ 				<xsd:element name="dtl_payment_method_code" type="xsd:string" />
+ 				<xsd:element name="dtl_allow_awt_flag" type="xsd:string" />
+ 				<xsd:element name="dtl_awt_group_name" type="xsd:string" />
+ 				<xsd:element name="dtl_email_address" type="xsd:string" />
+ 				<xsd:element name="dtl_accts_pay_code_company" type="xsd:string" />
+ 				<xsd:element name="dtl_accts_pay_code_location" type="xsd:string" />
+ 				<xsd:element name="dtl_accts_pay_code_business" type="xsd:string" />
+ 				<xsd:element name="dtl_accts_pay_code_department" type="xsd:string" />
+ 				<xsd:element name="dtl_accts_pay_code_section" type="xsd:string" />
+ 				<xsd:element name="dtl_accts_pay_code_major_acct" type="xsd:string" />
+ 				<xsd:element name="dtl_accts_pay_code_minor_acct" type="xsd:string" />
+ 				<xsd:element name="dtl2_cont_first_name" type="xsd:string" />
+ 				<xsd:element name="dtl2_cont_middle_name" type="xsd:string" />
+ 				<xsd:element name="dtl2_cont_last_name" type="xsd:string" />
+ 				<xsd:element name="dtl2_cont_prefix" type="xsd:string" />
+ 				<xsd:element name="dtl2_cont_title" type="xsd:string" />
+ 				<xsd:element name="dtl2_cont_phone_area_code" type="xsd:string" />
+ 				<xsd:element name="dtl2_cont_phone_number" type="xsd:string" />
+ 				<xsd:element name="dtl2_cont_fax_area_code" type="xsd:string" />
+ 				<xsd:element name="dtl2_cont_fax_area_number" type="xsd:string" />
+ 				<xsd:element name="postal_code" type="xsd:string" />
+ 				<xsd:element name="city" type="xsd:string" />
+ 				<xsd:element name="county" type="xsd:string" />
+ 				<xsd:element name="state" type="xsd:string" />
+ 				<xsd:element name="supplier_tin" type="xsd:string" />
+ 				<xsd:element name="member_or_payee_name" type="xsd:string" />
+				<xsd:element name="transaction_id" type="xsd:string" />
+ 			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name ="integ_ap_create_and_update_supplier_masterResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="response_code" type="xsd:string" />
+				<xsd:element name="response_message" type="xsd:string" />
+				<xsd:element name="error" type="aas:errorType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
 </xsd:schema>
