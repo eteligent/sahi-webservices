@@ -1,8 +1,0 @@
-package gov.aas.pagibig.service;
-
-import gov.aas.pagibig.webservice.IntegOtcPostCollectionsAndOtherCollectionsRequest;
-import gov.aas.pagibig.webservice.IntegOtcPostCollectionsAndOtherCollectionsResponse;
-
-public interface OtcCollectionsAndOtherCollectionsService {
-	public IntegOtcPostCollectionsAndOtherCollectionsResponse postOtcCollections(IntegOtcPostCollectionsAndOtherCollectionsRequest request);
-}
